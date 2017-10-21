@@ -1,0 +1,2 @@
+
+Bienvenu <?php echo $bout;?>
