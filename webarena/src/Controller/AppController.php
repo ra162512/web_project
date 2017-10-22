@@ -27,6 +27,8 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+    
+    
 
     /**
      * Initialization hook method.
@@ -37,20 +39,30 @@ class AppController extends Controller
      *
      * @return void
      */
-    public function initialize()
+  
+    
+    
+    
+    /*public function initialize()
     {
         parent::initialize();
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 
+
+
+*/
+    
+    
+    
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
-    }
+    // }
 
     /**
      * Before render callback.
@@ -71,5 +83,55 @@ class AppController extends Controller
     }
  
    
+    
+    
+    
+    
+    
+    
+    
+      //...
+
+   public function initialize()
+    {
+        $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'arenas',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'arenas',
+                'action' =>'accueil'
+            ],'loginAction' => [
+            'controller' => 'Arenas',
+            'action' => 'login',
+             ],
+            
+            
+        ]);
+    }
+
+    
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['index', 'view', 'display','accueil']);
+    }
+    public function connect()
+            {
+            $co=$this->Auth->user('id');
+            if($co!=null){
+                $message="Vous êtes bien connecté";
+                $this->set('message',$message);
+            }
+            else{
+                $message="Vous n'êtes pas connecté";
+                $this->set('message',$message); 
+            }
+           
+        }
+      
+      
+    //...
    
 }

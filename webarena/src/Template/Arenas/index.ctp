@@ -1,2 +1,2 @@
 
-Bienvenu <?php echo $bout;?>
+Bienvenu 
