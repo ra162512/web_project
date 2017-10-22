@@ -3,42 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/webarena/src/Controller/ArenasController.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/diary.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/webroot/css/webarena.css</file>
-            <file>file:/C:/wamp64/www/webarena/src/Console/Installer.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/signup.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/fighter.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Controller/AppController.php</file>
-            <file>file:/C:/wamp64/www/webarena/.htaccess</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Entity/empty</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Layout/default.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/sight.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/webroot/css/cake.css</file>
-            <file>file:/C:/wamp64/www/webarena/src/Controller/ErrorController.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Table/FightersTable.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Controller/PagesController.php</file>
-            <file>file:/C:/wamp64/www/webarena/config/app.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Pages/home.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/login.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Layout/ajax.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/test.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Table/empty</file>
-            <file>file:/C:/wamp64/www/webarena/webroot/index.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/index.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/webroot/css/base.css</file>
-            <file>file:/C:/wamp64/www/webarena/bin/cake.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Layout/error.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/tests/bootstrap.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Entity/User.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/View/Helper/empty</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Table/UsersTable.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Table/PlayersTable.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/add.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Application.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/accueil.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/webroot/css/home.css</file>
-            <file>file:/C:/wamp64/www/webarena/index.php</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Template/Arenas/accueil.ctp</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Controller/AppController.php</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Controller/ArenasController.php</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Template/Layout/default.ctp</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Template/Arenas/signup.ctp</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Template/Arenas/index.ctp</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Model/Entity/User.php</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/tmp/debug_kit.sqlite</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Template/Arenas/add.ctp</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/webarena/src/Template/Arenas/fighter.ctp</file>
         </group>
     </open-files>
 </project-private>
