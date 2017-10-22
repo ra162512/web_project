@@ -35,6 +35,8 @@ public function fighter(){}
 public function sight(){}
 public function diary(){}
 
-
+public function Game(){
+    
+}
 
 } 
