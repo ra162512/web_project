@@ -40,8 +40,10 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Index</a></li>
-            <li><a href="#about">Login</a></li>
-            <li><a href="#contact">Diary</a></li>
+            <li><a href='accueil'>Accueil</a></li>
+            <li><a href='add'>s'inscrire</a></li>
+            <li><a href='login'>Login</a></li>
+            <li><a href='signup'>Diary</a></li>
             <li><a href="#contact">Sight</a></li>
           </ul>
         </div><!--/.nav-collapse -->
