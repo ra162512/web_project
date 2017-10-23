@@ -9,8 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Starter Template for Bootstrap</title>
-
     <!-- Bootstrap core CSS -->
     <?php echo $this->Html->css('bootstrap.min'); ?>
     <?php echo $this->fetch("css"); ?>
@@ -46,14 +44,12 @@
             <li><a href='signup'>Diary</a></li>
             <li><a href="#contact">Sight</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 
     <div class="container" style="margin-top: 60px;">
         <?php echo $this->fetch("content"); ?>
-        <button type="button" class="btn btn-lg btn-default">Default</button>
-
     </div><!-- /.container -->
 
 
