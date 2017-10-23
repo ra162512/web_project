@@ -43,6 +43,7 @@
             <li><a href='login'>Login</a></li>
             <li><a href='signup'>Diary</a></li>
             <li><a href="#contact">Sight</a></li>
+            
           </ul>
         </div>
       </div>

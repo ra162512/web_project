@@ -116,6 +116,7 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         $this->Auth->allow(['index', 'view', 'display','accueil']);
+        
     }
     public function connect()
             {
@@ -129,9 +130,9 @@ class AppController extends Controller
                 $this->set('message',$message); 
             }
            
-        }
+           }
       
       
-    //...
+    //... 
    
 }
