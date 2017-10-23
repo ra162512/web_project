@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -25,11 +27,7 @@ use Cake\Event\Event;
  *
  * @link https://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller
-{
-    
-    
-
+class AppController extends Controller {
     /**
      * Initialization hook method.
      *
@@ -39,29 +37,25 @@ class AppController extends Controller
      *
      * @return void
      */
-  
-    
-    
-    
-    /*public function initialize()
-    {
-        parent::initialize();
+    /* public function initialize()
+      {
+      parent::initialize();
 
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
+      $this->loadComponent('RequestHandler');
+      $this->loadComponent('Flash');
 
 
 
-*/
-    
-    
-    
-        /*
-         * Enable the following components for recommended CakePHP security settings.
-         * see https://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
+     */
+
+
+
+    /*
+     * Enable the following components for recommended CakePHP security settings.
+     * see https://book.cakephp.org/3.0/en/controllers/components/security.html
+     */
+    //$this->loadComponent('Security');
+    //$this->loadComponent('Csrf');
     // }
 
     /**
@@ -70,69 +64,61 @@ class AppController extends Controller
      * @param \Cake\Event\Event $event The beforeRender event.
      * @return \Cake\Http\Response|null|void
      */
-    public function beforeRender(Event $event)
-    {
+    public function beforeRender(Event $event) {
         // Note: These defaults are just to get started quickly with development
         // and should not be used in production. You should instead set "_serialize"
         // in each action as required.
         if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])
+                in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
             $this->set('_serialize', true);
         }
     }
- 
-   
-    
-    
-    
-    
-    
-    
-    
-      //...
 
-   public function initialize()
-    {
+    //...
+
+    public function initialize() {
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'arenas',
-                'action' => 'index'
+                'controller' => 'Arenas',
+                'action' => 'accueil'
             ],
             'logoutRedirect' => [
-                'controller' => 'arenas',
-                'action' =>'accueil'
-            ],'loginAction' => [
-            'controller' => 'Arenas',
-            'action' => 'login',
-             ],
-            
-            
+                'controller' => 'Arenas',
+                'action' => 'accueil'
+            ],
+            'loginAction' => [
+                'controller' => 'Arenas',
+                'action' => 'login',
+            ],
+            'authenticate' => [
+                'Form' => [
+                    'userModel' => 'Players',
+                    'fields' =>
+                    [
+                        'username' => 'email',
+                        "password" => 'password'
+                    ]
+                ]
+            ]
         ]);
     }
 
-    
-    public function beforeFilter(Event $event)
-    {
-        $this->Auth->allow(['index', 'view', 'display','accueil']);
-        
+    public function beforeFilter(Event $event) {
+        $this->Auth->allow(['index', 'view', 'display', 'accueil']);
+          $co = $this->Auth->user('id');
+        if ($co != null) {
+            $message = "Vous êtes bien connecté";
+            $this->set('message', $message);
+        } else {
+            $message = "Vous n'êtes pas connecté";
+            $this->set('message', $message);
+        }
     }
-    public function connect()
-            {
-            $co=$this->Auth->user('id');
-            if($co!=null){
-                $message="Vous êtes bien connecté";
-                $this->set('message',$message);
-            }
-            else{
-                $message="Vous n'êtes pas connecté";
-                $this->set('message',$message); 
-            }
-           
-           }
-      
-      
+    
+
+  
+
     //... 
-   
 }

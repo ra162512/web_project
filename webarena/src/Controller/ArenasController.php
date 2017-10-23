@@ -33,32 +33,31 @@ class ArenasController extends AppController {
     }
 
     public function index() {
-        $this->loadModel('Users');
-        $this->set('users', $this->Users->find('all'));
+        $this->loadModel('Players');
+        $this->set('players', $this->Players->find('all'));
     }
 
     public function view($id) {
-        $this->loadModel('Users');
-        $user = $this->Users->get($id);
-        $this->set(compact('user'));
+        $this->loadModel('Players');
+        $player = $this->Players->get($id);
+        $this->set(compact('players'));
     }
 
     public function add() { //Pour ajouter un utlisateur
-        $this->loadModel('Users');
-        $user = $this->Users->newEntity();
+        $this->loadModel('Players');
+        $player = $this->Players->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
+            $player = $this->Players->patchEntity($player, $this->request->getData());
+            if ($this->Players->save($player)) {
                 $this->Flash->success(__("L'utilisateur a été sauvegardé."));
                 return $this->redirect(['action' => 'accueil']);
             }
             $this->Flash->error(__("Impossible d'ajouter l'utilisateur."));
         }
-        $this->set('user', $user);
+        $this->set('player', $player);
     }
 
     public function beforeFilter(Event $event) {  // permet de configurer l'authentification.
-
         parent::beforeFilter($event);
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
@@ -67,19 +66,19 @@ class ArenasController extends AppController {
     }
 
     public function login() { //pour se connecter
-        $this->loadModel('Users');
-        //  $message="vous n'ètes pas co";
-        //   $this->set('message',$message);
+        $this->loadModel('Players');
+     
+       
         if ($this->request->is('post')) {    // verifie que la requète utilise bien un post
-            $user = $this->Auth->identify(); //identifie l'utilisateur et renvoie  1 s'il a été identifié
+            $player = $this->Auth->identify(); //identifie l'utilisateur et renvoie  1 s'il a été identifié
+           
 
-            if ($user) {
-                //        $message="Vous êtes bien connecté";
-                //         $this->set('message',$message);
-                $this->Auth->setUser($user);    //pour connecter l’utilisateur et sauvegarder les infos de l’utilisateur dans la session 
+            if ($player) {
+            
+                $this->Auth->setUser($player);    //pour connecter l’utilisateur et sauvegarder les infos de l’utilisateur dans la session 
                 return $this->redirect($this->Auth->redirectUrl());  // redirige vers une url
-            }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            } else
+                $this->Flash->error(__('Invalid email or password, try again'));
         }
     }
 

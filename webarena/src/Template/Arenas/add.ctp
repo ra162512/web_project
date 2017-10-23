@@ -1,15 +1,13 @@
 
 <div class="players form">
-<?= $this->Form->create($user) ?>
+<?= $this->Form->create($player) ?>
     <fieldset>
         <legend><?= __('Pour vous inscrire remplissez le formulaire') ?></legend>
-        <?= $this->Form->control('username') ?>
+        <?= $this->Form->control('email') ?>
         </br>
         <?= $this->Form->control('password') ?>
         </br>
-        <?= $this->Form->control('role', [
-            'options' => ['admin' => 'Admin', 'author' => 'Author']
-        ]) ?>
+      
     </fieldset>
 <?= $this->Form->button(__('Ajouter')); ?>
 <?= $this->Form->end() ?>

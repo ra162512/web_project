@@ -42,15 +42,18 @@
             <li><a href='add'>s'inscrire</a></li>
             <li><a href='login'>Login</a></li>
             <li><a href='signup'>Diary</a></li>
-            <li><a href="#contact">Sight</a></li>
+            <li><a href='logout'>Deconnection</a></li>
             
           </ul>
         </div>
+         
       </div>
+        
     </nav>
-
+     
     <div class="container" style="margin-top: 60px;">
         <?php echo $this->fetch("content"); ?>
+        <h4>    <?php echo $message;?> </h4>
     </div><!-- /.container -->
 
 
