@@ -35,8 +35,8 @@ public function createfighter()
     {
       // Creation nouveau combatant
       $this->loadModel('Fighters');
-      //$this->loadModel('Players');
-      //$player_id= $this->Players->player_id;
+      $player_id= $this->Auth->user('id');
+      $this->set('player_id', $this->Auth->user('id'));
       $this->set('fighter_id', $this->request->session()->read('Fighters.id'));
       $fighter = $this->Fighters->newEntity();
       if ($this->request->is('post')) {
