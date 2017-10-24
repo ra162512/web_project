@@ -1,3 +1,4 @@
+<title>CREATEFIGHTER</title>
 <h1>Créer un nouveau combatant</h1>
 <?php
 

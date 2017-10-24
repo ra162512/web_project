@@ -9,7 +9,6 @@
         </br>
       
     </fieldset>
-<?= $this->Form->button(__('Ajouter')); ?>
-<?= $this->Form->end() ?>
+<?= $this->Form->button(__('Ajouter')); ?> 
+<?= $this->Form->end() ?> 
 </div>
-
