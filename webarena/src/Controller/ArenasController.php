@@ -54,6 +54,26 @@ public function createfighter()
       $this->set('message', $message);
     }
     }
+     public function afficherpassword() {
+          
+          if($this->request->is('post')){
+      
+                $data= $this->request->data;
+                $this->loadModel('Players');
+               
+                
+                if($joueur=$this->Players->find('all')->where(['Players.email' => $data['email']]))
+                {
+                    
+                    $joueur = $joueur->first();
+                $password= $joueur ->password;
+                
+                }else{$password="mail non connu"; }
+          }
+          $this->set('password', $password);
+          
+      }
+
     
     public function index() {
         $this->loadModel('Players');
@@ -85,7 +105,7 @@ public function createfighter()
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout', 'fighter', 'diary','connection']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
+        $this->Auth->allow(['add', 'logout', 'fighter', 'diary','connection','afficherpassword']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
     }
 
     public function login() { //pour se connecter
