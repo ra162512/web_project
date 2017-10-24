@@ -31,7 +31,26 @@ class ArenasController extends AppController {
     public function accueil() {
         
     }
-
+public function createfighter()
+    {
+      // Creation nouveau combatant
+      $this->loadModel('Fighters');
+      //$this->loadModel('Players');
+      //$player_id= $this->Players->player_id;
+      $this->set('fighter_id', $this->request->session()->read('Fighters.id'));
+      $fighter = $this->Fighters->newEntity();
+      if ($this->request->is('post')) {
+        $fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
+        if ($this->Fighters->save($fighter)) {
+          $message="Nouveau combatant crée";
+        }
+        else{
+          $message="Impossible de créer un nouveau combatant";
+      }
+      $this->set('message', $message);
+    }
+    }
+    
     public function index() {
         $this->loadModel('Players');
         $this->set('players', $this->Players->find('all'));
