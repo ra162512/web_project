@@ -11,6 +11,7 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "~1.0",
         "josegonzalez/dotenv": "2.*"
+	"webandcow/bs_helpers": "*"
     },
     "require-dev": {
         "psy/psysh": "@stable",
