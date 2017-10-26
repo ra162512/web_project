@@ -38,7 +38,10 @@ class ArenasController extends AppController {
     }
     
     public function arena(){
-        
+        $arene = array();
+        $this->loadModel('Surroundings');
+        $arena = $this->Surroundings->allCases();
+        $this->set('arene',$arena);   
     }
     
 public function createfighter()
