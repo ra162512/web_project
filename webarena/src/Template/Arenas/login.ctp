@@ -1,5 +1,7 @@
 <!-- src/Template/Users/login.ctp -->
 
+<title>LOGIN</title>
+
 <div class="players form">
 <?= $this->Flash->render() ?>
 <?= $this->Form->create() ?>

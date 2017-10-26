@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<?php echo $this->Html->docType();?>
 
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
+    <?php echo $this->Html->charset(); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -37,11 +37,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Index</a></li>
-            <li><a href='accueil'>Accueil</a></li>
-            <li><a href='add'>s'inscrire</a></li>
-            <li><a href='login'>Login</a></li>
-            <li><a href='signup'>Diary</a></li>
+            <li class="active"><a href="accueil">Home</a></li>
+            <li><a href='connection'>Connection</a></li>
+            <li><a href='fighter'>Fighter</a></li>
+            <li><a href='sight'>Vision</a></li>
+            <li><a href='diary'>Journal</a></li>
             <li><a href='logout'>Deconnection</a></li>
             
           </ul>

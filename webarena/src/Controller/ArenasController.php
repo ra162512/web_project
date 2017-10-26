@@ -32,12 +32,22 @@ class ArenasController extends AppController {
     public function accueil() {
         
     }
-public function createFighter()
+    
+    public function connection(){
+        
+    }
+    
+    public function arena(){
+        
+    }
+    
+public function createfighter()
     {
       // Creation nouveau combatant
+      
       $this->loadModel('Fighters');
-      //$this->loadModel('Players');
-      //$player_id= $this->Players->player_id;
+      $player_id= $this->Auth->user('id');
+      $this->set('player_id', $this->Auth->user('id'));
       $this->set('fighter_id', $this->request->session()->read('Fighters.id'));
       $fighter = $this->Fighters->newEntity();
       $id_user = $this->Auth->user('id');
@@ -54,6 +64,26 @@ public function createFighter()
       $this->set('message', $message);
     }
     }
+     public function afficherpassword() {
+          
+          if($this->request->is('post')){
+      
+                $data= $this->request->data;
+                $this->loadModel('Players');
+               
+                
+                if($joueur=$this->Players->find('all')->where(['Players.email' => $data['email']]))
+                {
+                    
+                    $joueur = $joueur->first();
+                $password= $joueur ->password;
+                
+                }else{$password="mail non connu"; }
+          }
+          $this->set('password', $password);
+          
+      }
+
     
     public function index() {
         $this->loadModel('Players');
@@ -85,7 +115,9 @@ public function createFighter()
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout', 'fighter', 'diary','message']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
+
+        $this->Auth->allow(['add', 'logout', 'fighter', 'diary','connection','afficherpassword']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
+
     }
 
     public function login() { //pour se connecter
@@ -158,7 +190,9 @@ public function createFighter()
             
             
             
-     public function liremessage(){       
+     public function liremessage(){
+         $listmessages=null;
+         $listnom=null;
          $this->loadModel('Fighters');
           $id_envoyeur = $this->Auth->user('id');
              $list3=$this->Fighters->getallFighterssender($id_envoyeur);
@@ -181,10 +215,12 @@ public function createFighter()
          $id_fighter2=$this->Fighters->find_id($nom_recupere2);
         $listmessages=$this->Messages->recuperermessages($id_fighter,$id_fighter2);
         $listnom=$this->Fighters->recuperernom($listmessages[1]);
-        $this->set('listmessages',$listmessages);
-        $this->set('listnom',$listnom);
+      
            }
-     } 
+             $this->set('listmessages',$listmessages);
+        $this->set('listnom',$listnom);
+     }
+     
         }      
                     
              

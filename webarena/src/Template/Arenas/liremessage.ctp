@@ -29,7 +29,7 @@
 
   <?php
           
-            
+           
             $titre=$listmessages[0];
              $message=$listmessages[2];
              $date=$listmessages[3];
