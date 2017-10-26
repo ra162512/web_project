@@ -37,7 +37,10 @@ class ArenasController extends AppController {
     }
     
     public function arena(){
-        
+        $arene = array();
+        $this->loadModel('Surroundings');
+        $arena = $this->Surroundings->allCases();
+        $this->set('arene',$arena);   
     }
     
 public function createfighter()
@@ -110,7 +113,7 @@ public function createfighter()
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout', 'fighter', 'diary','connection','afficherpassword']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
+        $this->Auth->allow(['add', 'logout', 'fighter', 'diary','connection']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
     }
 
     public function login() { //pour se connecter
@@ -133,5 +136,6 @@ public function createfighter()
     public function logout() {
         return $this->redirect($this->Auth->logout());
     }
-
+    
+    
 }

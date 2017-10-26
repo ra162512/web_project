@@ -1,4 +1,5 @@
 <h4>Récupération de votre mot de passe</h4>
+
     <?php echo $this->Form->create('afficherpassword');
     echo $this->Form->input('email', array("placeholder" => "Username", ['type' => 'email']));?>
 
