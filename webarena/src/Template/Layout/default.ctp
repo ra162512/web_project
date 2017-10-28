@@ -20,7 +20,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
+  
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -53,7 +53,7 @@
      
     <div class="container" style="margin-top: 60px;">
         <?php echo $this->fetch("content"); ?>
-        <h4>    <?php echo $message;?> </h4>
+        
     </div><!-- /.container -->
 
 
@@ -64,4 +64,7 @@
     <?php echo $this->Html->script('bootstrap.min'); ?>
     <?php echo $this->fetch("script"); ?>
   </body>
+  <footer>
+      <h4>    <?php echo $message;?> </h4>
+  </footer>
 </html>

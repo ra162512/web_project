@@ -37,10 +37,13 @@ class ArenasController extends AppController {
     }
     
     public function arena(){
-        $arene = array();
-        $this->loadModel('Surroundings');
-        $arena = $this->Surroundings->allCases();
-        $this->set('arene',$arena);   
+        $this->loadModel('Fighters');
+        if($this->request->is('post')){
+            $indice = $this->request->getData('direction');
+            $player_id = $this->Auth->user('id');
+            $mess = $this->Fighters->dplct($indice,$player_id);
+            $this->set('mess',$mess);
+        }
     }
     
 public function createfighter()
@@ -95,11 +98,11 @@ public function createfighter()
     }
 
     public function add() { //Pour ajouter un utlisateur
-        $this->loadModel('Players');
-        $player = $this->Players->newEntity();
+        $this->loadModel('Players'); //relit le modèle au controller
+        $player = $this->Players->newEntity(); // ajout d'un nouveau tuple dans la bdd
         if ($this->request->is('post')) {
             $player = $this->Players->patchEntity($player, $this->request->getData());
-            if ($this->Players->save($player)) {
+            if ($this->Players->save($player)) { // tuple inséré dans la bdd
                 $this->Flash->success(__("L'utilisateur a été sauvegardé."));
                 return $this->redirect(['action' => 'accueil']);
             }
@@ -136,6 +139,7 @@ public function createfighter()
     public function logout() {
         return $this->redirect($this->Auth->logout());
     }
+    
     
     
 }

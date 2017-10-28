@@ -1,5 +1,5 @@
 <title>CREATEFIGHTER</title>
-<h1>Créer un nouveau combatant</h1>
+<h1>Créer un nouveau combattant</h1>
 <?php
 
     $id = rand(0,100000);
@@ -26,7 +26,11 @@
     echo $this->form->input('guild_id', array('placeholder'=>'id de la guilde', 'type'=>'text'));
 
     echo $this->Form->button(__("Créer un combatant"));
-    echo $this->Form->end();?>
+    echo $this->Form->end();
+    
+    echo $code;
+    echo '<br/>';
+    echo 'coordinate_y';?>
 
     <h2> Informations </h2>
     <?php echo $message; ?>

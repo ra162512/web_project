@@ -6,9 +6,9 @@
         <?= $this->Form->control('email') ?>
         </br>
         <?= $this->Form->control('password') ?>
-        </br>
-      
+        </br>      
     </fieldset>
 <?= $this->Form->button(__('Ajouter')); ?> 
 <?= $this->Form->end() ?> 
 </div>
+
