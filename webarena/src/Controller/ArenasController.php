@@ -25,9 +25,39 @@ class ArenasController extends AppController {
         
     }
 
-    public function diary() {
-        
+    public function events() {
+    /*    $this->paginate = [
+            'contain'=>['Users']
+            ];
+            $this->set(diary)
+     */   
+    $message5="veuillez ajouter un article";
+    $this->loadModel('Events');
+    $event = $this->Events->newEntity();
+      $time = Time::now();
+      $this->set('time',$time);
+    /*if ($this->request->is('post')) { 
+            $titre=$this->request->getData('titre');
+            $contenu=$this->request->getData('contenu');
+            $event->titre=$titre;
+            $event->contenu=$contenu;
+            $time = Time::now();
+            $event->date_publication=$time;
+            if ($this->Events->save($event)) {
+                $message5="l'article a été ajouté voulez vous ajouter un autre article";
+                
+          
+            }
+    }*/
+    
+    $this->set('message5',$message5);
+    $tab=$this->Events->allEvents();
+    $this->set('tab',$tab);
+    
+    
+     
     }
+    
 
     public function accueil() {
         
