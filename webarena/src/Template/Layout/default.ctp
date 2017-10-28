@@ -41,7 +41,7 @@
             <li><a href='connection'>Connection</a></li>
             <li><a href='fighter'>Fighter</a></li>
             <li><a href='sight'>Vision</a></li>
-            <li><a href='diary'>Journal</a></li>
+            <li><a href='events'>Journal</a></li>
             <li><a href='logout'>Deconnection</a></li>
             
           </ul>
