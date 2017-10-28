@@ -46,6 +46,7 @@ summary {
     display: block;
 }
 
+
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
@@ -409,6 +410,7 @@ optgroup {
     font-weight: bold;
 }
 
+
 /* Tables
    ========================================================================== */
 
@@ -424,6 +426,10 @@ table {
 td,
 th {
     padding: 0;
+}
+.wesh{
+    color:red;
+    
 }
 
 /**
