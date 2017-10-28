@@ -94,7 +94,16 @@ class FightersTable extends Table {
      return $listeplayer;
 
 }
+    public function getallFightersall() {
 
+               
+   
+        $query = $this->find('all');
+                
+         
+     return ($query->toArray());
+
+}
 
 
 

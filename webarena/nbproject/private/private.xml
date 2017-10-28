@@ -3,17 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/webarena/src/Controller/ErrorController.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Table/PlayersTable.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/liremessage.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/create_fighter.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/connection.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Controller/ArenasController.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Controller/AppController.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Layout/default.ctp</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Table/FightersTable.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Model/Table/MessagesTable.php</file>
-            <file>file:/C:/wamp64/www/webarena/src/Template/Arenas/message.ctp</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/web_project/webarena/src/Controller/ArenasController.php</file>
+            <file>file:/C:/Users/attali/Desktop/webarena/web_project/webarena/src/Controller/ErrorController.php</file>
         </group>
     </open-files>
 </project-private>

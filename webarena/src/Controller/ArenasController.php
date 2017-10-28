@@ -38,10 +38,60 @@ class ArenasController extends AppController {
     }
     
     public function arena(){
-        $arene = array();
+       
         $this->loadModel('Surroundings');
-        $arena = $this->Surroundings->allCases();
-        $this->set('arene',$arena);   
+        $this->loadModel('Fighters');
+        $this->loadModel('Tools');
+        $this->loadModel('Events');
+        $event=$this->Events->allEvents();
+        $tools=$this->Tools->alltoolsTable();
+        $fighters=$this->Fighters->getallfightersall();
+        $surroundings = $this->Surroundings->allCases();
+        $tableauposition_surround[10][15]=array();
+        $tableauposition_tools[10][15]=array();
+         $tableauposition_fighters[10][15]=array();
+        
+        for($i=0;$i<10;$i++)
+        {
+             for($j=0;$j<15;$j++)
+            { 
+            $tableauposition_surround[$i][$j]=0;
+             $tableauposition_tools[$i][$j]=0;
+              $tableauposition_fighters[$i][$j]=0;
+            
+            }
+            
+        }
+        for($i=0;$i<count($surroundings);$i++)
+                {   
+
+                    $positionx_sur=$surroundings[$i]->coordinate_x;
+                    $positiony_sur=$surroundings[$i]->coordinate_y; 
+                    $tableauposition_surround[$positionx_sur-1][$positiony_sur-1]=1;
+                    
+                }
+                 for($i=0;$i<count($tools);$i++){
+
+                  $positionx_tool=$tools[$i]->coordinate_x;
+                    $positiony_tool=$tools[$i]->coordinate_y;
+                    $tableauposition_tools[$positionx_tool-1][$positiony_tool-1]=1;
+          
+                
+             }
+              for($i=0;$i<count($fighters);$i++)
+                {   
+
+                    $positionx_fig=$fighters[$i]->coordinate_x;
+                    $positiony_fig=$fighters[$i]->coordinate_y; 
+                    $tableauposition_fighters[$positionx_fig-1][$positiony_fig-1]=1;
+                    
+                }
+        $this->set('tab_pos_sur',$tableauposition_surround);
+        $this->set('tab_pos_tool',$tableauposition_tools);
+        $this->set('tab_pos_fig',$tableauposition_fighters);
+        
+        $arene=array($surroundings,$fighters,$tools,$event);
+        $this->set('arene',$arene);   
     }
     
 public function createfighter()
@@ -144,22 +194,39 @@ public function createfighter()
         return $this->redirect($this->Auth->logout());
     }
     public function message(){
-        
+         $listmessages=null;
+         $listnom=null;
          $this->loadModel('Fighters');
           $id_envoyeur = $this->Auth->user('id');
     //   
         $list=$this->Fighters->getallFighterssender($id_envoyeur);
         $list1=$this->Fighters->getallFightersreceiver1($id_envoyeur);
-      
+        $list3=$this->Fighters->getallFighterssender($id_envoyeur);
+        $list4=$this->Fighters->getallFightersreceiver1($id_envoyeur);
         $this->set('list',$list);
         $this->set('list1',$list1);
-
+        $this->set('list3',$list3);
+        $this->set('list4',$list4);
         
         $this->loadModel('Messages');
        $message = $this->Messages->newEntity();
        $message2="voulez vous envoyer un message?";
+       
       if ($this->request->is('post')) 
            {
+       if (isset($_POST['envoyer']))
+          { 
+              $mess="envoyer";
+             
+          }
+       if (isset($_POST['recevoir']))
+          {
+              $mess="recevoir";
+          }
+              
+              
+           $this->set('mess',$mess);
+          /*
           $indicetableau_joueur=$this->request->getData('namefrom');
           $indicetableau_joueur1=$this->request->getData('namedest');
           $elem1=$list[$indicetableau_joueur];
@@ -182,10 +249,16 @@ public function createfighter()
                    
                     }
         
-      
+                    */
         }
             $this->set('elem1',$message2);
-            }
+     
+          
+
+            
+            
+            
+  }
             
             
             
@@ -230,3 +303,10 @@ public function createfighter()
      
     
 
+
+      
+        
+        
+        
+        
+      
