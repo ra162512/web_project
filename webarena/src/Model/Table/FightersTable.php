@@ -223,6 +223,25 @@ class FightersTable extends Table {
       return $position;
         
     }
+          public function attraper($id,$position,$bonus){
+          
+          $posX=$position[0];
+          $posY=$position[1];
+          $query = $this->find('all')
+                ->select(['skill_sight','skill_strength','skill_health'])
+                ->where(['player_id' => $id]);
+                  foreach ($query as $row){
+            $skill_stre = $row->skill_strength;
+            $skill_hea = $row->skill_health;
+            $skill_sig=$row->skill_sight;
+        }    
+          
+          $query->update()                   
+                        ->set(['skill_strength' => $skill_stre +$bonus])
+                        ->execute();
+          
+          
+      }
 }
 
 

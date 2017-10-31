@@ -121,10 +121,10 @@ for ($i=0; $i<10; $i++){
       <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'2']]);    ?>
       <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'3']]);     ?>
       <?php       echo $mess;       ?>
-     
-       <?php
+               
+ <?php
        if($tab_pos_tool[$posX][$posY]==1){
-       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'4']]);   
+       echo  $this->Form->postButton('attraper',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'4']]);   
        }
        
        ?>

@@ -90,13 +90,21 @@ class ArenasController extends AppController {
                  
         
                 if($this->request->is('post')){
-            $indice = $this->request->getData('direction');
+                       $indice = $this->request->getData('direction');
         
             $indice=$this->request->getData('dep');
             
-            
+            if($indice<4){
             $mess = $this->Fighters->dplct($indice,$player_id,$tableauposition_surround,$tableauposition_fighters);
-            
+            }
+            if($indice==4){
+                
+                $position=$this->Fighters->find_pos($player_id);
+                $bonus=$this->Tools->recuperertool($position);
+                $this->Fighters->attraper($player_id,$position,$bonus);
+                $this->Tools-> effacertool($position);
+                
+            }
             }
             
             
