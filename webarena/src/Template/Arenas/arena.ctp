@@ -4,15 +4,25 @@
 
     <section style="grid-column: 1; grid-row: 1;">
 <?php 
-
+    $grid_width = 15;
+    $grid_height = 5;
+    $cell_width = 50;
+    $cell_height = 50;
+    $gutter = 3;
+    $posX=$pos_cour[0]-1;
+    $posY=$pos_cour[1]-1;
+   
 for ($i=0; $i<10; $i++){
-    for ($h=0; $h<15; $h++){                                                  
-        if($i%2==0)
+    for ($h=0; $h<15; $h++){       
+       
+     if(($i<=$posX+2&&$i>=$posX-2&&$h==$posY)||($h<=$posY+2&&$h>=$posY-2&&$i==$posX)||($i==$posX-1&&$h==$posY+1)||($i==$posX+1&&$h==$posY-1)||($i==$posX-1&&$h==$posY-1)||($i==$posX+1&&$h==$posY+1))  
+         { if($i%2==0)
                 {               
                     if($h%2==0)
                     {
                          if($tab_pos_fig[$i][$h]==1)
                                     {
+                                        
                                          echo $this->Html->image('fighter.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
                                     }
                         else if($tab_pos_sur[$i][$h]==1)
@@ -47,7 +57,7 @@ for ($i=0; $i<10; $i++){
                             }
                         }
                 }
-        else{
+        else {
                     if($h%2==0)
                     {
                         if($tab_pos_fig[$i][$h]==1)
@@ -87,28 +97,32 @@ for ($i=0; $i<10; $i++){
                                     echo $this->Html->image('herbe1.jpg', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
                             }
                     }                                
-                }                                    
+                } 
+         }
+         else
+             {
+            echo $this->Html->image('noir.jpg', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+        }
         }       
         echo '<br/>';
-    } ?>
+    }
+    
+      echo $posX;
+        echo $posY;
+       ?>
         
+       
     </section>    
     <section style="grid-column: 2; grid-row: 1;">
-        <?php 
-            echo $this->Form->create();
-            $tabl_direction = array('Haut', 'Bas', 'Droite', 'Gauche');
-            echo "Choisissez la direction"; 
-            echo '<br/>';
-            echo $this->Form->select('direction',$tabl_direction, ['class' => 'btn dropdown-toggle', 'data-toggle' => 'dropdown']);
-            echo $this->Form->button('Envoyer',['class' => 'btn btn-primary']);
-            echo $mess;
-            echo $this->Form->end();                                   
-        ?>
-        <?php
-        echo $this->Form->create();
-            echo $this->Form->button('Attaquer' , ['class' => 'btn btn-primary']);            
-        echo $this->Form->end();
-        ?>
+       
+   
+     <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'0']]);       ?>
+      <?php       echo  $this->Form->postButton('down',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'1']]);     ?>
+      <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'2']]);    ?>
+      <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'3']]);     ?>
+      <?php       echo $mess;       ?>
+        
+        
     </section>
 </section>
 

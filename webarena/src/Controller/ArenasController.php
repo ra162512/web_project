@@ -37,7 +37,9 @@ class ArenasController extends AppController {
         
     }
     
-    public function arena(){       
+    public function arena(){
+        
+          $mess="";
         $this->loadModel('Surroundings');
         $this->loadModel('Fighters');
         $this->loadModel('Tools');
@@ -50,14 +52,13 @@ class ArenasController extends AppController {
            } 
         }  
         
-        if($this->request->is('post')){
-            $indice = $this->request->getData('direction');
-            $player_id = $this->Auth->user('id');
-            $mess = $this->Fighters->dplct($indice,$player_id);
-            $this->set('mess',$mess);
-        }
                 
         
+        $player_id = $this->Auth->user('id');
+ 
+          
+        $position_courante=$this->Fighters->find_pos($player_id);
+        $sight=$this->Fighters->recupererfightervision($player_id);
         $event=$this->Events->allEvents();
         $tools=$this->Tools->alltoolsTable();
         $fighters=$this->Fighters->getallfightersall();
@@ -65,34 +66,70 @@ class ArenasController extends AppController {
         $tableauposition_surround[10][15]=array();
         $tableauposition_tools[10][15]=array();
         $tableauposition_fighters[10][15]=array();
+
+            
+            
+         
+        $position_courante=$this->Fighters->find_pos($player_id);
+        $sight=$this->Fighters->recupererfightervision($player_id);
+        $event=$this->Events->allEvents();
+        $tools=$this->Tools->alltoolsTable();
+        $fighters=$this->Fighters->getallfightersall();
+        $surroundings = $this->Surroundings->allCases();
+         
+        for($i=0;$i<10;$i++)
+        {
+             for($j=0;$j<15;$j++)
+            { 
+            $tableauposition_surround[$i][$j]=0;
+             $tableauposition_tools[$i][$j]=0;
+              $tableauposition_fighters[$i][$j]=0;
+            
+            }
+            
+        }
+        for($i=0;$i<count($surroundings);$i++)
+                {   
+
+                    $positionx_sur=$surroundings[$i]->coordinate_x;
+                    $positiony_sur=$surroundings[$i]->coordinate_y; 
+                    $tableauposition_surround[$positionx_sur-1][$positiony_sur-1]=1;
+                    
+                }
+                 for($i=0;$i<count($tools);$i++){
+
+                  $positionx_tool=$tools[$i]->coordinate_x;
+                    $positiony_tool=$tools[$i]->coordinate_y;
+                    $tableauposition_tools[$positionx_tool-1][$positiony_tool-1]=1;
+          
+                
+             }
+              for($i=0;$i<count($fighters);$i++)
+                {   
+
+                    $positionx_fig=$fighters[$i]->coordinate_x;
+                    $positiony_fig=$fighters[$i]->coordinate_y; 
+                    $tableauposition_fighters[$positionx_fig-1][$positiony_fig-1]=1;
+                    
+                }
+                
+                if($this->request->is('post')){
+            $indice = $this->request->getData('direction');
         
-        
-        
-        for($i=0;$i<10;$i++){
-            for($j=0;$j<15;$j++){ 
-                $tableauposition_surround[$i][$j]=0;
-                $tableauposition_tools[$i][$j]=0;
-                $tableauposition_fighters[$i][$j]=0;            
-            }            
-        }
-        for($i=0;$i<count($surroundings);$i++){   
-            $positionx_sur=$surroundings[$i]->coordinate_x;
-            $positiony_sur=$surroundings[$i]->coordinate_y; 
-            $tableauposition_surround[$positionx_sur-1][$positiony_sur-1]=1;                    
-        }
-        for($i=0;$i<count($tools);$i++){
-            $positionx_tool=$tools[$i]->coordinate_x;
-            $positiony_tool=$tools[$i]->coordinate_y;
-            $tableauposition_tools[$positionx_tool-1][$positiony_tool-1]=1;                          
-        }
-        for($i=0;$i<count($fighters);$i++){   
-            $positionx_fig=$fighters[$i]->coordinate_x;
-            $positiony_fig=$fighters[$i]->coordinate_y; 
-            $tableauposition_fighters[$positionx_fig-1][$positiony_fig-1]=1;                    
-        }
+            $indice=$this->request->getData('dep');
+            
+            
+            $mess = $this->Fighters->dplct($indice,$player_id,$tableauposition_surround,$tableauposition_fighters);
+            
+            }
+                
+   
+        $this->set('mess',$mess);
         $this->set('tab_pos_sur',$tableauposition_surround);
         $this->set('tab_pos_tool',$tableauposition_tools);
         $this->set('tab_pos_fig',$tableauposition_fighters);
+        $this->set('sight',$sight);
+        $this->set('pos_cour',$position_courante);
         
         $arene=array($surroundings,$fighters,$tools,$event);
         $this->set('arene',$arene); 
@@ -200,12 +237,12 @@ public function createfighter()
         return $this->redirect($this->Auth->logout());
     }
     
+    
     public function message(){
          $listmessages=null;
          $listnom=null;
          $this->loadModel('Fighters');
-          $id_envoyeur = $this->Auth->user('id');
-    //   
+          $id_envoyeur = $this->Auth->user('id');   
         $list=$this->Fighters->getallFighterssender($id_envoyeur);
         $list1=$this->Fighters->getallFightersreceiver1($id_envoyeur);
         $list3=$this->Fighters->getallFighterssender($id_envoyeur);
@@ -221,19 +258,13 @@ public function createfighter()
        
       if ($this->request->is('post')) 
            {
-       if (isset($_POST['envoyer']))
-          { 
-              $mess="envoyer";
-             
-          }
-       if (isset($_POST['recevoir']))
+          $choix= $this->request->getData('choix');
+         
+              
+              
+          
+          if($choix==1)
           {
-              $mess="recevoir";
-          }
-              
-              
-           $this->set('mess',$mess);
-          /*
           $indicetableau_joueur=$this->request->getData('namefrom');
           $indicetableau_joueur1=$this->request->getData('namedest');
           $elem1=$list[$indicetableau_joueur];
@@ -255,9 +286,25 @@ public function createfighter()
                     $message2="message envoyé! voulez vous en envoyer un autre?";
                    
                     }
+          }
+          if($choix==2){
+              
+              $indice=$this->request->getData('namefrom');
+         $indice2=$this->request->getData('namewith');
+         $nom_recupere=$list3[$indice];
+         $nom_recupere2=$list4[$indice2];
+          $this->set('hey',$nom_recupere);
+         $id_fighter=$this->Fighters->find_id($nom_recupere);
+         $id_fighter2=$this->Fighters->find_id($nom_recupere2);
+        $listmessages=$this->Messages->recuperermessages($id_fighter,$id_fighter2);
+        $listnom=$this->Fighters->recuperernom($listmessages[1]);
+        $this->set('listmessages',$listmessages);
+        $this->set('listnom',$listnom);
+          }
         
-                    */
+                    
         }
+         $this->set('mess',$choix);
             $this->set('elem1',$message2);
      
           
@@ -268,41 +315,7 @@ public function createfighter()
   }
             
             
-            
-            
-            
-            
-            
-     public function liremessage(){
-         $listmessages=null;
-         $listnom=null;
-         $this->loadModel('Fighters');
-          $id_envoyeur = $this->Auth->user('id');
-             $list3=$this->Fighters->getallFighterssender($id_envoyeur);
-        $list4=$this->Fighters->getallFightersreceiver1($id_envoyeur);
-                 $this->set('list3',$list3);
-                 $this->set('list4',$list4);
-                 
-               $this->loadModel('Messages');
-               
-            if ($this->request->is('post')) 
-            
-             {
-                
-         $indice=$this->request->getData('namefrom');
-         $indice2=$this->request->getData('namewith');
-         $nom_recupere=$list3[$indice];
-         $nom_recupere2=$list4[$indice2];
-          $this->set('hey',$nom_recupere);
-         $id_fighter=$this->Fighters->find_id($nom_recupere);
-         $id_fighter2=$this->Fighters->find_id($nom_recupere2);
-        $listmessages=$this->Messages->recuperermessages($id_fighter,$id_fighter2);
-        $listnom=$this->Fighters->recuperernom($listmessages[1]);
-      
-           }
-             $this->set('listmessages',$listmessages);
-        $this->set('listnom',$listnom);
-     }
+       
      
         }      
                     
