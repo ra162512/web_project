@@ -46,10 +46,11 @@
     
 <?= $this->Form->end() ?>
    
- <?php   echo $mess; ?>
+
 <br/>
 
  <?php
+            
           if($mess==2){
            
             $titre=$listmessages[0];
