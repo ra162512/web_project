@@ -11,11 +11,11 @@
     $gutter = 3;
     $posX=$pos_cour[0]-1;
     $posY=$pos_cour[1]-1;
-   
+    
 for ($i=0; $i<10; $i++){
     for ($h=0; $h<15; $h++){       
        
-     if(($i<=$posX+2&&$i>=$posX-2&&$h==$posY)||($h<=$posY+2&&$h>=$posY-2&&$i==$posX)||($i==$posX-1&&$h==$posY+1)||($i==$posX+1&&$h==$posY-1)||($i==$posX-1&&$h==$posY-1)||($i==$posX+1&&$h==$posY+1))  
+     if((abs($posX-$i)+abs($posY-$h))<=$sight )  
          { if($i%2==0)
                 {               
                     if($h%2==0)
