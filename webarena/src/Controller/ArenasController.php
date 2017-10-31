@@ -151,7 +151,7 @@ class ArenasController extends AppController {
         $this->set('tab_pos_fig',$tableauposition_fighters);
         $this->set('sight',$sight);
         $this->set('pos_cour',$position_courante);
-        
+        $this->set('sight',$sight);
         $arene=array($surroundings,$fighters,$tools,$event);
         $this->set('arene',$arene); 
         
@@ -260,6 +260,7 @@ public function createfighter()
     
     
     public function message(){
+        $choix=3;
          $listmessages=null;
          $listnom=null;
          $this->loadModel('Fighters');
@@ -325,6 +326,7 @@ public function createfighter()
         
                     
         }
+        
          $this->set('mess',$choix);
             $this->set('elem1',$message2);
      
