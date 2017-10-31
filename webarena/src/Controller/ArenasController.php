@@ -44,9 +44,9 @@ class ArenasController extends AppController {
         $this->loadModel('Fighters');
         $this->loadModel('Tools');
         $this->loadModel('Events');
-          
         
-         $player_id = $this->Auth->user('id');
+        
+        $player_id = $this->Auth->user('id');
  
           
         $position_courante=$this->Fighters->find_pos($player_id);
@@ -161,8 +161,9 @@ class ArenasController extends AppController {
         $this->set('pos_cour',$position_courante);
         $this->set('sight',$sight);
         $arene=array($surroundings,$fighters,$tools,$event);
-        $this->set('arene',$arene);   
+        $this->set('arene',$arene); 
         
+         
     }
     
 public function createfighter()

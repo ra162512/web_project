@@ -116,7 +116,7 @@ for ($i=0; $i<10; $i++){
     <section style="grid-column: 2; grid-row: 1;">
        
    
-     <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'0']]);       ?>
+      <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'0']]);       ?>
       <?php       echo  $this->Form->postButton('down',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'1']]);     ?>
       <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'2']]);    ?>
       <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'3']]);     ?>

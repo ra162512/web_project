@@ -19,18 +19,14 @@ class FightersTable extends Table {
 
     //put your code here
     public function test() {
-
-
         return "ok";
     }
 
-    public function getBestFighter() {
-        
+    public function getBestFighter() {        
         $fighter1 = $this
                 ->find('all')
                 ->order(['level' => 'DESC'])
-                ->first()
-        ;
+                ->first();
         return $fighter1;
     }
     
@@ -136,73 +132,47 @@ class FightersTable extends Table {
 
 }
 
-    public function getallFighters() {
-
-               
-      $listeplayer=array();
-       $i=0;
+    public function getallFighters() {               
+        $listeplayer=array();
+        $i=0;
         $query = $this->find('all');
-                
-                
-        
+
         foreach ($query as $row) {
-           $listeplayer[$i]=$row->name;
-           $i=$i+1;
-                            
-          
-    }
-     return $listeplayer;
+          $listeplayer[$i]=$row->name;
+          $i=$i+1;                                    
+        }
+        return $listeplayer;
 
 }
-    public function getallFightersall() {
-
-               
-   
+    public function getallFightersall() {                 
         $query = $this->find('all');
-                
-         
-     return ($query->toArray());
-
+        return ($query->toArray());
 }
 
-
-
-   public function find_id($name){
-                       
-    
+   public function find_id($name){                          
       $query = $this->find()
-    ->select(['id',])
-    ->where(['name' => $name]);
+            ->select(['id',])
+            ->where(['name' => $name]);
                 
-        foreach ($query as $row) {
-          $id=$row->id;
-                            
-          
-    }
+      foreach ($query as $row) {
+          $id=$row->id;                                 
+        }
         
      return $id;
-                            
-         
-    }
-    
-    
-       public function recuperernom($listid){
-                       
-
-    $listname=array();
-    for($i=0;$i<count($listid);$i++){
-      $query = $this->find()
-    ->select(['name'])
-    ->where(['id' => $listid[$i]]);
-                
+}
+     
+    public function recuperernom($listid){
+        $listname=array();
+        for($i=0;$i<count($listid);$i++){
+            $query = $this->find()
+                ->select(['name'])
+                ->where(['id' => $listid[$i]]);
+            
         foreach ($query as $row) {
           $listname[$i]=$row->name;
-                            
-          }
+        }
     }
-     return $listname;
-                            
-         
+     return $listname;                                   
     }
     
     

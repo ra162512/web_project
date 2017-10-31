@@ -27,15 +27,12 @@ class MessagesTable extends Table {
    
         $query = $this->find()
         ->select(['fighter_id_from','title','message','date'])
-        ->where(['fighter_id' => $id_fighter,'OR' => ['fighter_id_from' =>$id_fighter2 ]])
-        ->orWhere(['fighter_id' => $id_fighter2,'OR' => ['fighter_id_from' =>$id_fighter ]])
+        ->where(['fighter_id' => $id_fighter,'OR' => ['fighter_id_from' => $id_fighter2 ]])
+        ->orWhere(['fighter_id' => $id_fighter2,'OR' => ['fighter_id_from' => $id_fighter ]])
         ->order(['date' => 'ASC']);
      
-          foreach ($query as $row) {
-        
-              
-              
-              $id[$i]=$row->fighter_id_from;
+        foreach ($query as $row) {                                    
+          $id[$i]=$row->fighter_id_from;
           $titres[$i]=$row->title;
           $message[$i]=$row->message;
           $date[$i]=$row->date;
