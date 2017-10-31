@@ -26,9 +26,14 @@ for ($i=0; $i<10; $i++){
                                          echo $this->Html->image('fighter.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
                                     }
                         else if($tab_pos_sur[$i][$h]==1)
-                                    {
-                                         echo $this->Html->image('buisson3.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
-                         
+                                    {   
+                                        if($tab_type_sur[$i][$h]=="buisson"){
+                                                echo $this->Html->image('buisson3.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                     }
+                                         if($tab_type_sur[$i][$h]=="arbre"){
+                                                echo $this->Html->image('arbre1vrai.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                        
+                                                     }
                                     }
                         else if($tab_pos_tool[$i][$h]==1)
                                     {
@@ -45,8 +50,12 @@ for ($i=0; $i<10; $i++){
                                     }
                         else if($tab_pos_sur[$i][$h]==1)
                                     {
-                                        echo $this->Html->image('buisson4.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
-                         
+                                        if($tab_type_sur[$i][$h]=="buisson"){
+                                                echo $this->Html->image('buisson4.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }
+                                        if($tab_type_sur[$i][$h]=="arbre"){
+                                                 echo $this->Html->image('arbre2vrai.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                }
                                     }
                         else if($tab_pos_tool[$i][$h]==1)
                                     {
@@ -66,8 +75,12 @@ for ($i=0; $i<10; $i++){
                             }
                         else if($tab_pos_sur[$i][$h]==1)
                             {
-                                    echo $this->Html->image('buisson4.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
-                         
+                                    if($tab_type_sur[$i][$h]=="buisson"){
+                                                echo $this->Html->image('buisson4.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                    }
+                                     if($tab_type_sur[$i][$h]=="arbre"){
+                                                 echo $this->Html->image('arbre2vrai.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                }                         
                             }
                           else if($tab_pos_tool[$i][$h]==1)
                             {
@@ -85,8 +98,13 @@ for ($i=0; $i<10; $i++){
                                     echo $this->Html->image('fighter.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
                             }
                         else if($tab_pos_sur[$i][$h]==1)
-                            {
+                            {    if($tab_type_sur[$i][$h]=="buisson"){
                                     echo $this->Html->image('buisson3.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                    }
+                                    if($tab_type_sur[$i][$h]=="arbre"){
+                                                 echo $this->Html->image('arbre1vrai.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                }   
+                                   
                             }
                          else if($tab_pos_tool[$i][$h]==1)
                             {
@@ -107,8 +125,8 @@ for ($i=0; $i<10; $i++){
         echo '<br/>';
     }
     
-      echo $posX;
-        echo $posY;
+      
+       
        ?>
         
        
