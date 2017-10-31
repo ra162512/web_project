@@ -3,8 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/attali/Desktop/webarena/web_project/webarena/src/Controller/ArenasController.php</file>
-            <file>file:/C:/Users/attali/Desktop/webarena/web_project/webarena/src/Controller/ErrorController.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Model/Table/EventsTable.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Model/Table/FightersTable.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Model/Table/SurroundingsTable.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/View/AppView.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Controller/ArenasController.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Template/Arenas/test.ctp</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Template/Layout/ajax.ctp</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Model/Table/MessagesTable.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Controller/AppController.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Template/Arenas/arena.ctp</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Model/Table/PlayersTable.php</file>
+            <file>file:/C:/wamp64/www/web_project/webarena/src/Template/Arenas/signup.ctp</file>
         </group>
     </open-files>
 </project-private>

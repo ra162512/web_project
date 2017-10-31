@@ -37,19 +37,26 @@ class ArenasController extends AppController {
         
     }
     
-    public function arena(){
-       
+    public function arena(){       
         $this->loadModel('Surroundings');
         $this->loadModel('Fighters');
         $this->loadModel('Tools');
         $this->loadModel('Events');
-
+        
+        for ($i=0; $i<rand(0,10); $i++){
+           for ($j=0; $j<rand(0,15); $j++){
+            $this->Surroundings->buissa();
+            $this->Surroundings->buissb();
+           } 
+        }  
+        
         if($this->request->is('post')){
             $indice = $this->request->getData('direction');
             $player_id = $this->Auth->user('id');
             $mess = $this->Fighters->dplct($indice,$player_id);
             $this->set('mess',$mess);
         }
+                
         
         $event=$this->Events->allEvents();
         $tools=$this->Tools->alltoolsTable();
@@ -57,50 +64,40 @@ class ArenasController extends AppController {
         $surroundings = $this->Surroundings->allCases();
         $tableauposition_surround[10][15]=array();
         $tableauposition_tools[10][15]=array();
-         $tableauposition_fighters[10][15]=array();
+        $tableauposition_fighters[10][15]=array();
         
-        for($i=0;$i<10;$i++)
-        {
-             for($j=0;$j<15;$j++)
-            { 
-            $tableauposition_surround[$i][$j]=0;
-             $tableauposition_tools[$i][$j]=0;
-              $tableauposition_fighters[$i][$j]=0;
-            
-            }
-            
+        
+        
+        for($i=0;$i<10;$i++){
+            for($j=0;$j<15;$j++){ 
+                $tableauposition_surround[$i][$j]=0;
+                $tableauposition_tools[$i][$j]=0;
+                $tableauposition_fighters[$i][$j]=0;            
+            }            
         }
-        for($i=0;$i<count($surroundings);$i++)
-                {   
-
-                    $positionx_sur=$surroundings[$i]->coordinate_x;
-                    $positiony_sur=$surroundings[$i]->coordinate_y; 
-                    $tableauposition_surround[$positionx_sur-1][$positiony_sur-1]=1;
-                    
-                }
-                 for($i=0;$i<count($tools);$i++){
-
-                  $positionx_tool=$tools[$i]->coordinate_x;
-                    $positiony_tool=$tools[$i]->coordinate_y;
-                    $tableauposition_tools[$positionx_tool-1][$positiony_tool-1]=1;
-          
-                
-             }
-              for($i=0;$i<count($fighters);$i++)
-                {   
-
-                    $positionx_fig=$fighters[$i]->coordinate_x;
-                    $positiony_fig=$fighters[$i]->coordinate_y; 
-                    $tableauposition_fighters[$positionx_fig-1][$positiony_fig-1]=1;
-                    
-                }
+        for($i=0;$i<count($surroundings);$i++){   
+            $positionx_sur=$surroundings[$i]->coordinate_x;
+            $positiony_sur=$surroundings[$i]->coordinate_y; 
+            $tableauposition_surround[$positionx_sur-1][$positiony_sur-1]=1;                    
+        }
+        for($i=0;$i<count($tools);$i++){
+            $positionx_tool=$tools[$i]->coordinate_x;
+            $positiony_tool=$tools[$i]->coordinate_y;
+            $tableauposition_tools[$positionx_tool-1][$positiony_tool-1]=1;                          
+        }
+        for($i=0;$i<count($fighters);$i++){   
+            $positionx_fig=$fighters[$i]->coordinate_x;
+            $positiony_fig=$fighters[$i]->coordinate_y; 
+            $tableauposition_fighters[$positionx_fig-1][$positiony_fig-1]=1;                    
+        }
         $this->set('tab_pos_sur',$tableauposition_surround);
         $this->set('tab_pos_tool',$tableauposition_tools);
         $this->set('tab_pos_fig',$tableauposition_fighters);
         
         $arene=array($surroundings,$fighters,$tools,$event);
-        $this->set('arene',$arene);   
+        $this->set('arene',$arene); 
         
+         
     }
     
 public function createfighter()
@@ -202,6 +199,7 @@ public function createfighter()
     public function logout() {
         return $this->redirect($this->Auth->logout());
     }
+    
     public function message(){
          $listmessages=null;
          $listnom=null;

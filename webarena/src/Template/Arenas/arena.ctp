@@ -4,11 +4,6 @@
 
     <section style="grid-column: 1; grid-row: 1;">
 <?php 
-    $grid_width = 15;
-    $grid_height = 5;
-    $cell_width = 50;
-    $cell_height = 50;
-    $gutter = 3;
 
 for ($i=0; $i<10; $i++){
     for ($h=0; $h<15; $h++){                                                  
@@ -106,10 +101,14 @@ for ($i=0; $i<10; $i++){
             echo '<br/>';
             echo $this->Form->select('direction',$tabl_direction, ['class' => 'btn dropdown-toggle', 'data-toggle' => 'dropdown']);
             echo $this->Form->button('Envoyer',['class' => 'btn btn-primary']);
-            echo $this->Form->end();
             echo $mess;
+            echo $this->Form->end();                                   
         ?>
-        
+        <?php
+        echo $this->Form->create();
+            echo $this->Form->button('Attaquer' , ['class' => 'btn btn-primary']);            
+        echo $this->Form->end();
+        ?>
     </section>
 </section>
 

@@ -22,9 +22,33 @@ class SurroundingsTable extends Table {
                 ->find('all');
       
         
-        return ($query->toArray());
-        
+        return ($query->toArray());    
     }
+    
+    public function buissa() {
+        $x = rand(0,10);
+        $y = rand(0,15);
+        $query = $this->find('all');
+        
+        if ($query->count()<=30){
+        $query->insert(['type','coordinate_x','coordinate_y'])
+                ->values(['type' => 'buisson3.png', 'coordinate_x' => $x, 'coordinate_y' => $y])
+                ->execute(); 
+        }      
+    }
+    
+    public function buissb() {
+        $x = rand(0,10);
+        $y = rand(0,15);
+        
+        $query = $this->find('all');
+        
+        if ($query->count()<=30){
+        $query->insert(['type','coordinate_x','coordinate_y'])
+                ->values(['type' => 'buisson4.png', 'coordinate_x' => $x, 'coordinate_y' => $y])
+                ->execute(); 
+        }
+    }
+
+
 }
-
-
