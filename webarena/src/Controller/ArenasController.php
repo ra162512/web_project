@@ -45,14 +45,6 @@ class ArenasController extends AppController {
         $this->loadModel('Tools');
         $this->loadModel('Events');
         
-        for ($i=0; $i<rand(0,10); $i++){
-           for ($j=0; $j<rand(0,15); $j++){
-            $this->Surroundings->buissa();
-            $this->Surroundings->buissb();
-           } 
-        }  
-        
-                
         
         $player_id = $this->Auth->user('id');
  
@@ -65,8 +57,47 @@ class ArenasController extends AppController {
         $surroundings = $this->Surroundings->allCases();
         $tableauposition_surround[10][15]=array();
         $tableauposition_tools[10][15]=array();
-        $tableauposition_fighters[10][15]=array();
+         $tableauposition_fighters[10][15]=array();  
+                 for($i=0;$i<10;$i++)
+        {
+             for($j=0;$j<15;$j++)
+            { 
+            $tableauposition_surround[$i][$j]=0;
+             
+              $tableauposition_fighters[$i][$j]=0;
+            
+            }
+            
+        }
+        for($i=0;$i<count($surroundings);$i++)
+                {   
 
+                    $positionx_sur=$surroundings[$i]->coordinate_x;
+                    $positiony_sur=$surroundings[$i]->coordinate_y; 
+                    $tableauposition_surround[$positionx_sur][$positiony_sur]=1;
+                    
+                }
+                
+        for($i=0;$i<count($fighters);$i++)
+                {   
+
+                    $positionx_fig=$fighters[$i]->coordinate_x;
+                    $positiony_fig=$fighters[$i]->coordinate_y; 
+                    $tableauposition_fighters[$positionx_fig][$positiony_fig]=1;
+                    
+                }
+                
+                 
+        
+                if($this->request->is('post')){
+            $indice = $this->request->getData('direction');
+        
+            $indice=$this->request->getData('dep');
+            
+            
+            $mess = $this->Fighters->dplct($indice,$player_id,$tableauposition_surround,$tableauposition_fighters);
+            
+            }
             
             
          
@@ -112,17 +143,7 @@ class ArenasController extends AppController {
                     $tableauposition_fighters[$positionx_fig-1][$positiony_fig-1]=1;
                     
                 }
-                
-                if($this->request->is('post')){
-            $indice = $this->request->getData('direction');
-        
-            $indice=$this->request->getData('dep');
-            
-            
-            $mess = $this->Fighters->dplct($indice,$player_id,$tableauposition_surround,$tableauposition_fighters);
-            
-            }
-                
+             
    
         $this->set('mess',$mess);
         $this->set('tab_pos_sur',$tableauposition_surround);

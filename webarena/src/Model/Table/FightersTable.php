@@ -194,6 +194,7 @@ class FightersTable extends Table {
         
     }
     
+   
 }
 
 
