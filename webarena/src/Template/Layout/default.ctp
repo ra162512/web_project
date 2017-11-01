@@ -39,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">WEBARENA</a>
+          <a class="navbar-brand" href="accueil">WEBARENA</a>
 
         </div>
         <div id="navbar" class="collapse navbar-collapse">
