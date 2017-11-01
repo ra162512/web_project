@@ -244,9 +244,7 @@ class ArenasController extends AppController {
                 $this->Tools-> effacertool($position);
                 
             }
-            if($indice==5){
-                $this->Tools->createTools();
-            }
+            
             if($indice==6){
                 
                 $position_advX=$position[0]+1;
