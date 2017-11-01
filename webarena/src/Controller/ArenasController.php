@@ -263,7 +263,7 @@ class ArenasController extends AppController {
                     
                     for ($i;$i<rand(1,10); $i++){
                         for ($j; $j<rand(1,15); $j++){
-                            if($tableauposition_fighters[$i][$j]==0 || $tableauposition_surround[$i][$j]==0){
+                            if($tableauposition_fighters[$i][$j]==0 && $tableauposition_surround[$i][$j]==0){
                             $this->Tools->coeur();
                             $this->Tools->vue();
                             $this->Tools->epee();
@@ -336,11 +336,8 @@ class ArenasController extends AppController {
                             $this->Surroundings->arbre();
                             }
                         }
-                    }
-                    
-                }
-                
-              
+                    }                    
+                }                              
             }
             
             
