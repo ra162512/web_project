@@ -109,6 +109,7 @@ class ArenasController extends AppController {
         $this->loadModel('Events');
         
         
+        
         $player_id = $this->Auth->user('id');
         $sortie=$this->Fighters->existfig($player_id);
         if($sortie==null){
@@ -180,6 +181,9 @@ class ArenasController extends AppController {
                 $this->Tools-> effacertool($position);
                 
             }
+            if($indice==5){
+                $this->Tools->createTools();
+            }
             if($indice==6){
                 
                 $position_advX=$position[0]+1;
@@ -231,6 +235,17 @@ class ArenasController extends AppController {
                     $messagez="event sauvegardé";
                 }
                  }
+                if ($indice==10){
+                    $this->Surroundings->deleteSurrounds();
+                    for ($i=0;$i<rand(0,10); $i++){
+                        for ($j=0; $j<rand(0,15); $j++){
+                            $this->Surroundings->buiss();
+                            $this->Surroundings->pierre();
+                            $this->Surroundings->arbre();
+                        }
+                    }
+                    
+                }
                 
               
             }
