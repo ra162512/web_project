@@ -39,16 +39,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">WEBARENA</a>
+          <a class="navbar-brand" href="accueil">WEBARENA</a>
 
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="accueil">Home</a></li>
             <li><a href='connection'>Connexion</a></li>
-            <li><a href='fighter'>Fighter</a></li>
+            <li><a href='create_fighter'>Fighter</a></li>
             <li><a href='arena'>Vision</a></li>
             <li><a href='events'>Journal</a></li>
+            <li><a href='nouvelleguilde'>New guilde</a></li>
+            <li><a href='avatar'>Avatar & Upgrades</a></li>
             <li><a href='logout'>Deconnection</a></li>
             
           </ul>
@@ -78,6 +80,6 @@
       <div align="right">
       <h5> Brice Koenig <br/> Yacine   <br/> Raphael attali  <br/>  Coraline Amemoutou<br/> option B & F </h5>
       <h4>    <?php echo $message;?> </h4>
-      </div>
+      </div>      
   </footer>
 </html>
