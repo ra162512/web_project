@@ -251,8 +251,9 @@ class ArenasController extends AppController {
             if($indice==4){
                 
                 $position=$this->Fighters->find_pos($player_id);
-                $bonus=$this->Tools->recuperertool($position);
-                $this->Fighters->attraper($player_id,$position,$bonus);
+                $bonus=$this->Tools->recupererbonustool($position);
+                $type=$this->Tools->recuperertypetool($position);
+                $this->Fighters->attraper($player_id,$position,$bonus,$type);
                 $this->Tools-> effacertool($position);
                 
             }
