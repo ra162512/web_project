@@ -25,9 +25,10 @@ class SurroundingsTable extends Table {
         return ($query->toArray());    
     }
     
-    public function buissa() {
+ public function buissa() {
         $x = rand(0,10);
         $y = rand(0,15);
+        
         $query = $this->find('all');
         
         if ($query->count()<=30){
@@ -49,6 +50,31 @@ class SurroundingsTable extends Table {
                 ->execute(); 
         }
     }
-
+    
+    public function pierrea() {
+        $x = rand(0,10);
+        $y = rand(0,15);
+        
+        $query = $this->find('all');
+        
+        if ($query->count()<=30){
+        $query->insert(['type','coordinate_x','coordinate_y'])
+                ->values(['type' => 'pierre2.png', 'coordinate_x' => $x, 'coordinate_y' => $y])
+                ->execute();
+        }      
+    }
+    
+    public function pierreb() {
+        $x = rand(0,10);
+        $y = rand(0,15);
+        
+        $query = $this->find('all');
+        
+        if ($query->count()<=30){
+        $query->insert(['type','coordinate_x','coordinate_y'])
+                ->values(['type' => 'pierre1.png', 'coordinate_x' => $x, 'coordinate_y' => $y])
+                ->execute();
+        }      
+    }
 
 }

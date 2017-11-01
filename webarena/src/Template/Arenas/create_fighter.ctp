@@ -3,8 +3,8 @@
 <?php
 
     $id = rand(0,100000);
-    $x = rand(1,15);
-    $y = rand(1,10);
+    $x = rand(1,10);
+    $y = rand(1,15);
     $defaultLevel = 1;
     $defaultXP = 0;
     $defaultSight = 2;
