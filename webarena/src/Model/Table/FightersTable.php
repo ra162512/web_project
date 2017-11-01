@@ -42,31 +42,31 @@ class FightersTable extends Table {
                 ->where(['player_id' => $id]);
         
         foreach ($query as $row){
-            $posX = $row->coordinate_x;
-            $posY = $row->coordinate_y;
+            $posX = $row->coordinate_x-1;
+            $posY = $row->coordinate_y-1;
         }        
             
-            if ($direction == 0&& $posX>1&&$tableau_buisson[$posX-1][$posY]!=1&&$tableau_fighter[$posX-1][$posY]!=1){
+            if ($direction == 0&& $posX>=1&&$tableau_buisson[$posX-1][$posY]!=1&&$tableau_fighter[$posX-1][$posY]!=1){
                 $query->update()                   
-                        ->set(['coordinate_x' => $posX -1])
+                        ->set(['coordinate_x' => $posX ])
                         ->execute();
                 $message = 'Vous allez en haut';
             }                        
             else if ($direction == 1&& $posX<10&&$tableau_buisson[$posX+1][$posY]!=1&&$tableau_fighter[$posX+1][$posY]!=1){
                 $query->update()                   
-                        ->set(['coordinate_x' => $posX +1])
+                        ->set(['coordinate_x' => $posX +2])
                         ->execute();
                 $message  ='Vous allez en bas';
             }
             else if ($direction == 2&& $posY<15&&$tableau_buisson[$posX][$posY+1]!=1&&$tableau_fighter[$posX][$posY+1]!=1){
                 $query->update()                   
-                        ->set(['coordinate_y' => $posY +1])
+                        ->set(['coordinate_y' => $posY +2])
                         ->execute();
                 $message  ='Vous allez à droite';
             }
-            else if ($direction == 3&& $posY>1&&$tableau_buisson[$posX][$posY-1]!=1&&$tableau_fighter[$posX][$posY-1]!=1){
+            else if ($direction == 3&& $posY>=1&&$tableau_buisson[$posX][$posY-1]!=1&&$tableau_fighter[$posX][$posY-1]!=1){
                 $query->update()                   
-                        ->set(['coordinate_y' => $posY -1])
+                        ->set(['coordinate_y' => $posY])
                         ->execute();
                 $message  ='Vous allez à gauche';
             }

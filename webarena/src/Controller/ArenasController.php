@@ -55,6 +55,7 @@ class ArenasController extends AppController {
         $tools=$this->Tools->alltoolsTable();
         $fighters=$this->Fighters->getallfightersall();
         $surroundings = $this->Surroundings->allCases();
+        $tableau_type_surround[10][15]=array();
         $tableauposition_surround[10][15]=array();
         $tableauposition_tools[10][15]=array();
          $tableauposition_fighters[10][15]=array();  
@@ -63,7 +64,7 @@ class ArenasController extends AppController {
              for($j=0;$j<15;$j++)
             { 
             $tableauposition_surround[$i][$j]=0;
-             
+             $tableau_type_surround[10][15]=" ";
               $tableauposition_fighters[$i][$j]=0;
             
             }
@@ -74,8 +75,8 @@ class ArenasController extends AppController {
 
                     $positionx_sur=$surroundings[$i]->coordinate_x;
                     $positiony_sur=$surroundings[$i]->coordinate_y; 
-                    $tableauposition_surround[$positionx_sur][$positiony_sur]=1;
-                    
+                    $tableauposition_surround[$positionx_sur-1][$positiony_sur-1]=1;
+                    $tableau_type_surround[$positionx_sur-1][$positiony_sur-1]=$surroundings[$i]->type;
                 }
                 
         for($i=0;$i<count($fighters);$i++)
@@ -83,7 +84,7 @@ class ArenasController extends AppController {
 
                     $positionx_fig=$fighters[$i]->coordinate_x;
                     $positiony_fig=$fighters[$i]->coordinate_y; 
-                    $tableauposition_fighters[$positionx_fig][$positiony_fig]=1;
+                    $tableauposition_fighters[$positionx_fig-1][$positiony_fig-1]=1;
                     
                 }
                 
@@ -133,7 +134,7 @@ class ArenasController extends AppController {
                     $positionx_sur=$surroundings[$i]->coordinate_x;
                     $positiony_sur=$surroundings[$i]->coordinate_y; 
                     $tableauposition_surround[$positionx_sur-1][$positiony_sur-1]=1;
-                    
+                    $tableau_type_surround[$positionx_sur-1][$positiony_sur-1]=$surroundings[$i]->type;
                 }
                  for($i=0;$i<count($tools);$i++){
 
@@ -155,6 +156,7 @@ class ArenasController extends AppController {
    
         $this->set('mess',$mess);
         $this->set('tab_pos_sur',$tableauposition_surround);
+        $this->set('tab_type_sur', $tableau_type_surround);
         $this->set('tab_pos_tool',$tableauposition_tools);
         $this->set('tab_pos_fig',$tableauposition_fighters);
         $this->set('sight',$sight);
