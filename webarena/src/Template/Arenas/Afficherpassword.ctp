@@ -8,4 +8,4 @@
 
     <h2> Informations </h2>
    
-    <?php echo "votre mot de passe est: "; echo '<b>'.$password;?>
+    <?php echo "votre nouveau mot de passe est: "; echo '<b>'.$password;?>

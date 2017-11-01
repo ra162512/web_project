@@ -42,7 +42,8 @@ class ArenasController extends AppController {
     $messG="Guilde non crée";
     $this->loadModel('Guilds');
     $guild = $this->Guilds->newEntity();
-
+    $guild_id=$guild->id;
+    
     if ($this->request->is('post')) {
       $guild = $this->Guilds->patchEntity($guild, $this->request->data);
       if ($this->Guilds->save($guild)) {
@@ -52,24 +53,26 @@ class ArenasController extends AppController {
         $messG="Impossible de créer une nouvelle Guilde";
     }
     }
+    $this->set('guild_id', $guild_id);
   $this->set('messG', $messG);
   }
 
   
-   public function Avatar(){      
+   public function Avatar(){  
+       
             $this->loadModel('Fighters');
             $session = $this->request->session();
             $myid=$session->read('Auth.User.id');
             $this->set('particularRecord', 'uploadAvatar'); //Setting View Variable
             $list=$this->Fighters->getallFighterssender($myid);
             $this->set('list',$list);
-               
+            
 		if ($this->request->is('post')) { 
                     $choix= $this->request->getData('choix');  
                     
                       if($choix==1){
                                  
-		                 $indicetableau_joueur=$this->request->getData('namefighter');
+		                 $indicetableau_joueur=$this->request->getData('name');                                                                                                  
                                  $elem1=$list[$indicetableau_joueur];
                                  $fighter_id=$this->Fighters->find_id($elem1);
                                  $this->set('fighter_id',$fighter_id);
@@ -84,14 +87,14 @@ class ArenasController extends AppController {
                                  $this->set('skill_health', $health);
                                  $this->set('xp', $xp);
                                  $this->set('level', $level);
-                                    }
-                                   
-                      if($choix==2){  
+                      
+                          
 			  if (!empty($this->request->data['upload']['name'])) {
-                                $file = $this->request->data['upload']; //put the data into a var for easy use
-                               
-				$ext = substr(strtolower(strrchr($file['name'], '.')), 1); //get the extension
-				$arr_ext = array('jpg', 'jpeg', 'gif', 'png'); //set allowed extensions
+                                $file = $this->request->data['upload']; 
+                                //Récupere l'extension
+				$ext = substr(strtolower(strrchr($file['name'], '.')), 1);
+                                //Verifie l'extention
+				$arr_ext = array('jpg', 'jpeg', 'gif', 'png'); 
 	
 				
 				
@@ -103,11 +106,54 @@ class ArenasController extends AppController {
                                                                                 
                         
                      }	
-                   if($choix==3){$this->Fighters->upgradeCaracteristics($fighter_id, 1);
-                                $allo=$fighter_id;
-                   }
-                   if($choix==4){$this->Fighters->upgradeCaracteristics($fighter_id, 2);}
-                   if($choix==5){$this->Fighters->upgradeCaracteristics($fighter_id, 3);}
+                   if($choix==3){$indicetableau_joueur=$this->request->getData('name');                                                                                                  
+                                 $elem1=$list[$indicetableau_joueur];
+                                 $fighter_id=$this->Fighters->find_id($elem1);
+                                 $this->set('fighter_id',$fighter_id);
+                                 $this->set('fighter_name',$elem1);
+                                 $sight=$this->Fighters->find_sight($elem1);
+                                 $strength=$this->Fighters->find_strength($elem1);
+                                 $health=$this->Fighters->find_health($elem1);
+                                 $xp=$this->Fighters->find_xp($elem1);
+                                 $level=$this->Fighters->find_level($elem1);
+                                 $this->set('fighter_sight', $sight);
+                                 $this->set('skill_strength', $strength);
+                                 $this->set('skill_health', $health);
+                                 $this->set('xp', $xp);
+                                 $this->set('level', $level);
+                                 $this->Fighters->upgradeCaracteristics($fighter_id, 1);}
+                   if($choix==4){$indicetableau_joueur=$this->request->getData('name');                                                                                                  
+                                 $elem1=$list[$indicetableau_joueur];
+                                 $fighter_id=$this->Fighters->find_id($elem1);
+                                 $this->set('fighter_id',$fighter_id);
+                                 $this->set('fighter_name',$elem1);
+                                 $sight=$this->Fighters->find_sight($elem1);
+                                 $strength=$this->Fighters->find_strength($elem1);
+                                 $health=$this->Fighters->find_health($elem1);
+                                 $xp=$this->Fighters->find_xp($elem1);
+                                 $level=$this->Fighters->find_level($elem1);
+                                 $this->set('fighter_sight', $sight);
+                                 $this->set('skill_strength', $strength);
+                                 $this->set('skill_health', $health);
+                                 $this->set('xp', $xp);
+                                 $this->set('level', $level);
+                                 $this->Fighters->upgradeCaracteristics($fighter_id, 2);}
+                   if($choix==5){$indicetableau_joueur=$this->request->getData('name');                                                                                                  
+                                 $elem1=$list[$indicetableau_joueur];
+                                 $fighter_id=$this->Fighters->find_id($elem1);
+                                 $this->set('fighter_id',$fighter_id);
+                                 $this->set('fighter_name',$elem1);
+                                 $sight=$this->Fighters->find_sight($elem1);
+                                 $strength=$this->Fighters->find_strength($elem1);
+                                 $health=$this->Fighters->find_health($elem1);
+                                 $xp=$this->Fighters->find_xp($elem1);
+                                 $level=$this->Fighters->find_level($elem1);
+                                 $this->set('fighter_sight', $sight);
+                                 $this->set('skill_strength', $strength);
+                                 $this->set('skill_health', $health);
+                                 $this->set('xp', $xp);
+                                 $this->set('level', $level);
+                                 $this->Fighters->upgradeCaracteristics($fighter_id, 3);}
                    
 		}
                 $this->set('allo',$allo);
@@ -126,21 +172,6 @@ class ArenasController extends AppController {
         $this->loadModel('Fighters');
         $this->loadModel('Tools');
         $this->loadModel('Events');
-        
-      /*********************************************//////////////  
-        /*for ($i=0; $i<rand(0,10); $i++){
-            for($j=0; $j<rand(0,15); $j++){
-                $this->Surroundings->buissa();
-                $this->Surroundings->buissb();
-                $this->Surroundings->pierrea();
-                $this->Surroundings->pierreb();
-            }
-        }
-      */
-        
-        /////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////
-        
         
         
         
@@ -225,10 +256,7 @@ class ArenasController extends AppController {
                 $this->Tools-> effacertool($position);
                 
             }
-            if ($indice==5){
-                $this->Tools->createTools();
-                
-                }           
+           
             if($indice==6){
                 
                 $position_advX=$position[0]+1;
@@ -280,6 +308,22 @@ class ArenasController extends AppController {
                     $messagez="event sauvegardé";
                 }
                  }
+                if ($indice==10){
+                    $i=0;
+                    $j=0;
+                    $this->Surroundings->deleteSurrounds();
+                    
+                    for ($i;$i<rand(0,10); $i++){
+                        for ($j; $j<rand(0,15); $j++){
+                            if($tableauposition_fighters[$i][$j]==0 || $tableauposition_tools[$i][$j]==0){
+                            $this->Surroundings->buiss();
+                            $this->Surroundings->pierre();
+                            $this->Surroundings->arbre();
+                            }
+                        }
+                    }
+                    
+                }
                 
               
             }
@@ -376,13 +420,14 @@ public function createfighter()
       
                 $data= $this->request->data;
                 $this->loadModel('Players');
-               
+                
                 
                 if($joueur=$this->Players->find('all')->where(['Players.email' => $data['email']]))
-                {
+                {   $joueur = $joueur->first();
+                    $password= rand(0, 10000);
+                    $joueur->password=$password;
                     
-                    $joueur = $joueur->first();
-                $password= $joueur ->password;
+                    
                 
                 }else{$password="mail non connu"; }
           }

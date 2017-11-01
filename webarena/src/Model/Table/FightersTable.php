@@ -258,20 +258,21 @@ class FightersTable extends Table {
     
     public function upgradeCaracteristics($id, $selection){
           
-         /* $query = $this->find('all')
+          $query = $this->find('all')
+                ->select(['skill_sight','skill_strength','skill_health','level'])
                 ->where(['id' => $id]);
-   foreach ($query as $row){
-          $skill_stre=$row->skill_strength;
-          $level=$row->level;
-        }
-      
+                  foreach ($query as $row){
+            $skill_stre = $row->skill_strength;
+            $skill_hea = $row->skill_health;
+            $skill_sig=$row->skill_sight;
+            $level=$row->level;
+        }    
           if ($selection==1){
           $query->update()                   
-                        ->set(['skill_strength' => $skill_stre +1])
+                  ->set(['skill_strength' => $skill_stre +1])
                   ->set(['level' => $level +1])
-                        ->execute();
+                  ->execute();
           }
-             
           if ($selection==2){
           $query->update()                   
                         ->set(['skill_health' => $skill_hea +1])
@@ -284,8 +285,7 @@ class FightersTable extends Table {
                   ->set(['level' => $level +1])
                         ->execute();
           }
-          * 
-          */
+         
           return $id;
       }
 
@@ -322,6 +322,8 @@ class FightersTable extends Table {
       return $position;
         
     }
+    
+     
           public function attraper($id,$position,$bonus){
           
           $posX=$position[0];
