@@ -96,8 +96,9 @@ class ArenasController extends AppController {
                      }	
                    
 		}
+                $this->set('choix',$choix);
                 $this->set('mess',$test);
-    }
+    }           
     public function arena(){
         
           $mess="";

@@ -11,6 +11,7 @@
 echo $this->Form->create('Envoyer');
 echo $this->Form->select('namefighter',$list);
 $this->Form->hidden('choix',['value' => 1]);
+
 echo $this->Form->button('Change your avatar');
 echo $this->Form->end();
 
