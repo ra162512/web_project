@@ -42,7 +42,8 @@ class ArenasController extends AppController {
     $messG="Guilde non crée";
     $this->loadModel('Guilds');
     $guild = $this->Guilds->newEntity();
-
+    $guild_id=$guild->id;
+    
     if ($this->request->is('post')) {
       $guild = $this->Guilds->patchEntity($guild, $this->request->data);
       if ($this->Guilds->save($guild)) {
@@ -52,6 +53,7 @@ class ArenasController extends AppController {
         $messG="Impossible de créer une nouvelle Guilde";
     }
     }
+    $this->set('guild_id', $guild_id);
   $this->set('messG', $messG);
   }
 
@@ -244,7 +246,7 @@ class ArenasController extends AppController {
                 $this->Tools-> effacertool($position);
                 
             }
-            
+           
             if($indice==6){
                 
                 $position_advX=$position[0]+1;
