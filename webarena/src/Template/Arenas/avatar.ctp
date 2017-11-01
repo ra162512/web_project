@@ -10,8 +10,7 @@
         
 echo $this->Form->create('Envoyer');
 echo $this->Form->select('namefighter',$list);
-$this->Form->hidden('choix',['value' => 1]);
-
+echo $this->Form->hidden('choix',['value' => 1]);
 echo $this->Form->button('Change your avatar');
 echo $this->Form->end();
 
@@ -27,7 +26,7 @@ echo $this->Form->end();
         <th>Health</th>
         <th>Sight</th>
     </tr>
- <?php  echo $mess; if($mess==1){
+ <?php   if($choix==1){
 echo $this->Form->create($particularRecord, ['enctype' => 'multipart/form-data']);
 echo $this->Form->input('upload', ['type' => 'file']);
 $this->Form->hidden('choix',['value' => 2]);
@@ -39,7 +38,7 @@ echo $this->Form->end();
         <td><?= $level?> </td>
         <td><?= $xp?></td>
         <td><?= $skill_strength?></td>
-        <td><?= $skill_health?>/<?= $fighter_name?></td>
+        <td><?= $skill_health?>
         <td><?= $fighter_sight?></td>
     </tr>
 <br>

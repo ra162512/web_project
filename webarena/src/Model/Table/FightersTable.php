@@ -315,10 +315,13 @@ class FightersTable extends Table {
         foreach ($query as $row){
             $level_adv= $row->level;
             $health=$row->skill_health;
+            $name_adv=$row->name;
         }
         foreach ($query1 as $row){
             $level_mon= $row->level;
             $strength=$row->skill_strength;
+            $xp=$row->xp;
+            $name_att=$row->name;
         }         
         
         
@@ -332,20 +335,39 @@ class FightersTable extends Table {
            $query->update()                   
                  ->set(['skill_health' =>$health-$strength ])
                  ->execute(); 
+            $query1->update()                   
+                 ->set(['xp' =>$xp+1 ])
+                 ->execute(); 
+          
            $message="attaque réussie bravo!" ;
+           $mort_ounon=1;
            }
            else{
+                           $query1->update()                   
+                 ->set(['xp' =>$xp+$level_adv ])
+                 ->execute(); 
+               
                     $query->delete()
                     ->execute();
-           
+                    
+           $message="bravo tu l'as buté!" ;
+           $mort_ounon=2;
            }
             
         }
         else {
             $message="malheuresement l'attaque n'as pas réussie";
+            $mort_ounon=0;
             }
         
-        return $message;
+        $infos_event=array($message,$name_adv,$name_att,$mort_ounon);
+        return $infos_event;
+    }
+    
+    public function existfig($player_id){
+         $query = $this->find('all')
+        ->where(['player_id' => $player_id]);
+       return ($query->toArray());
     }
 }
 

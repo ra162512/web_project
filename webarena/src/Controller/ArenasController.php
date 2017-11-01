@@ -66,7 +66,7 @@ class ArenasController extends AppController {
                     $choix= $this->request->getData('choix');  
                     
                       if($choix==1){
-                                 $test=1;
+                                
 		                 $indicetableau_joueur=$this->request->getData('namefighter');
                                  $elem1=$list[$indicetableau_joueur];
                                  $fighter_id=$this->Fighters->find_id($elem1);
@@ -97,9 +97,9 @@ class ArenasController extends AppController {
                    
 		}
                 $this->set('choix',$choix);
-                $this->set('mess',$test);
     }           
     public function arena(){
+        
         
           $mess="";
           $reussite=" "; 
@@ -110,7 +110,14 @@ class ArenasController extends AppController {
         
         
         $player_id = $this->Auth->user('id');
- 
+        $sortie=$this->Fighters->existfig($player_id);
+        if($sortie==null){
+            $existe=0;
+        }
+        else {
+            $existe=1;
+        }
+        if($existe==1){
           
         $position_courante=$this->Fighters->find_pos($player_id);
         $sight=$this->Fighters->recupererfightervision($player_id);
@@ -155,6 +162,8 @@ class ArenasController extends AppController {
                  
         
          if($this->request->is('post')){
+            
+             $infos_event= [0,0,0,-1];
              $position=$this->Fighters->find_pos($player_id);
             $indice = $this->request->getData('direction');
         
@@ -175,30 +184,55 @@ class ArenasController extends AppController {
                 
                 $position_advX=$position[0]+1;
                 $position_advY=$position[1];
-                $reussite=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
-               
+                $infos_event=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
+                $reussite=$infos_event[0];
                 } 
              if($indice==7){
                
                 $position_advX=$position[0]-1;
                 $position_advY=$position[1];
-                 $reussite=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
-              
+                  $infos_event=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
+                 $reussite=$infos_event[0];
                 }
              if($indice==8){
               
                 $position_advX=$position[0];
                 $position_advY=$position[1]+1;
-                 $reussite=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
-             
+                  $infos_event=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
+                $reussite=$infos_event[0];
                 } 
             if($indice==9){
              
                 $position_advX=$position[0];
                 $position_advY=$position[1]-1;
-                 $reussite=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
-               
-                } 
+                 $infos_event=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
+                 $reussite=$infos_event[0];
+                }
+                if($infos_event[3]==1){
+                   $event = $this->Events->newEntity();
+                   $event->name=$infos_event[2]." a attaqué ".$infos_event[1];
+                   $event->coordinate_x=$position_advX;
+                   $event->coordinate_y=$position_advY;
+                   $time = Time::now();
+                        $event->date=$time;
+                    if ($this->Events->save($event)) {
+                    $messagez="event sauvegardé";
+                   
+                    }  
+                }
+                 if($infos_event[3]==2){
+                                        $event = $this->Events->newEntity();
+                   $event->name=$infos_event[2]." a tué ".$infos_event[1];
+                   $event->coordinate_x=$position_advX;
+                   $event->coordinate_y=$position_advY;
+                   $time = Time::now();
+                        $event->date=$time;
+                    if ($this->Events->save($event)) {
+                    $messagez="event sauvegardé";
+                }
+                 }
+                
+              
             }
             
             
@@ -258,6 +292,8 @@ class ArenasController extends AppController {
         $arene=array($surroundings,$fighters,$tools,$event);
         $this->set('arene',$arene); 
          $this->set('reussite',$reussite);
+        }
+         $this->set('existe',$existe);
          
     }
     

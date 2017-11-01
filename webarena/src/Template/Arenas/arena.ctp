@@ -1,5 +1,5 @@
 <title>Arena</title>
-
+<?php if($existe==1){  ?>
 <section style="display :grid; grid-template-columns: 950px 250px; grid-template-rows: 950px ;">
 
     <section style="grid-column: 1; grid-row: 1;">
@@ -175,5 +175,11 @@ for ($i=0; $i<10; $i++){
     </section>
 </section>
 
+<?php }
 
+else{
+    echo "veuillez creer un fighter pour jouer dans l'arène";
+
+  }
+ 
 
