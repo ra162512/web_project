@@ -25,7 +25,7 @@ echo $this->Form->hidden('choix',['value' => 1]);
 echo $this->Form->button('Change your avatar');
 echo $this->Form->end(); 
      ?>
-     <?php   if ($choix==1 ){ ?>
+     <?php   if ($choix==1 ){ echo $this->Html->image('avatar/' . $fighter_id . '.jpg'); ?>
     <tr>
         <td><?= $fighter_name?></td>
         <td><?= $level?> </td>
