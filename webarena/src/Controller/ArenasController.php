@@ -40,6 +40,7 @@ class ArenasController extends AppController {
     public function arena(){
         
           $mess="";
+          $reussite=" "; 
         $this->loadModel('Surroundings');
         $this->loadModel('Fighters');
         $this->loadModel('Tools');
@@ -58,7 +59,8 @@ class ArenasController extends AppController {
         $tableau_type_surround[10][15]=array();
         $tableauposition_surround[10][15]=array();
         $tableauposition_tools[10][15]=array();
-         $tableauposition_fighters[10][15]=array();  
+        $tableauposition_fighters[10][15]=array();  
+        
                  for($i=0;$i<10;$i++)
         {
              for($j=0;$j<15;$j++)
@@ -90,8 +92,9 @@ class ArenasController extends AppController {
                 
                  
         
-                if($this->request->is('post')){
-                       $indice = $this->request->getData('direction');
+         if($this->request->is('post')){
+             $position=$this->Fighters->find_pos($player_id);
+            $indice = $this->request->getData('direction');
         
             $indice=$this->request->getData('dep');
             
@@ -106,6 +109,34 @@ class ArenasController extends AppController {
                 $this->Tools-> effacertool($position);
                 
             }
+            if($indice==6){
+                
+                $position_advX=$position[0]+1;
+                $position_advY=$position[1];
+                $reussite=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
+               
+                } 
+             if($indice==7){
+               
+                $position_advX=$position[0]-1;
+                $position_advY=$position[1];
+                 $reussite=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
+              
+                }
+             if($indice==8){
+              
+                $position_advX=$position[0];
+                $position_advY=$position[1]+1;
+                 $reussite=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
+             
+                } 
+            if($indice==9){
+             
+                $position_advX=$position[0];
+                $position_advY=$position[1]-1;
+                 $reussite=$this->Fighters->attaquer($player_id,$position_advX,$position_advY);
+               
+                } 
             }
             
             
@@ -164,7 +195,7 @@ class ArenasController extends AppController {
         $this->set('sight',$sight);
         $arene=array($surroundings,$fighters,$tools,$event);
         $this->set('arene',$arene); 
-        
+         $this->set('reussite',$reussite);
          
     }
     
@@ -287,7 +318,7 @@ public function createfighter()
         $this->loadModel('Messages');
        $message = $this->Messages->newEntity();
        $message2="voulez vous envoyer un message?";
-       
+       $message3="voulez vous envoyer un cri?";
       if ($this->request->is('post')) 
            {
           $choix= $this->request->getData('choix');
@@ -333,12 +364,44 @@ public function createfighter()
         $this->set('listmessages',$listmessages);
         $this->set('listnom',$listnom);
           }
+          
+                    if($choix==2){
+              
+              $indice=$this->request->getData('namefrom');
+         $indice2=$this->request->getData('namewith');
+         $nom_recupere=$list3[$indice];
+         $nom_recupere2=$list4[$indice2];
+          $this->set('hey',$nom_recupere);
+         $id_fighter=$this->Fighters->find_id($nom_recupere);
+         $id_fighter2=$this->Fighters->find_id($nom_recupere2);
+        $listmessages=$this->Messages->recuperermessages($id_fighter,$id_fighter2);
+        $listnom=$this->Fighters->recuperernom($listmessages[1]);
+        $this->set('listmessages',$listmessages);
+        $this->set('listnom',$listnom);
+          }
+                    if($choix==3){
+              
+              $cri=$this->request->getData('cri');
+              $this->loadModel('Events');
+              //$this->Events->fairelecri();
+              $event = $this->Events->newEntity();
+              $event->name=$cri;
+              $event->coordinate_x=0;
+              $event->coordinate_y=0;
+               $time = Time::now();
+               $event->date=$time;
+              if ($this->Events->save($event)) {
+                    $message3="cri envoyé! voulez vous en envoyer un autre?";
+                   
+                    }             
+          }
         
                     
         }
         
          $this->set('mess',$choix);
             $this->set('elem1',$message2);
+            $this->set('elem8',$message3);
      
           
 

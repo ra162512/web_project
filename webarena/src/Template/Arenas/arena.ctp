@@ -146,7 +146,32 @@ for ($i=0; $i<10; $i++){
        }
        
        ?>
-        
+ <?php
+       if($posX<9){
+       if($tab_pos_fig[$posX+1][$posY]==1){
+       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'6']]); 
+       echo $reussite;
+       }
+       }
+       if($posX>1){
+       if($tab_pos_fig[$posX-1][$posY]==1){
+       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'7']]); 
+       echo $reussite;                                   }
+                   }
+       if($posY<14){
+       if($tab_pos_fig[$posX][$posY+1]==1){
+       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'8']]); 
+        echo $reussite;                                    }
+                    }
+       if($posY>1){
+       if($tab_pos_fig[$posX][$posY-1]==1){                                   
+       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'9']]); 
+       echo $reussite;
+       
+       }
+       }
+       
+       ?>
     </section>
 </section>
 

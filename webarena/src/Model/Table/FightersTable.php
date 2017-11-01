@@ -52,13 +52,13 @@ class FightersTable extends Table {
                         ->execute();
                 $message = 'Vous allez en haut';
             }                        
-            else if ($direction == 1&& $posX<10&&$tableau_buisson[$posX+1][$posY]!=1&&$tableau_fighter[$posX+1][$posY]!=1){
+            else if ($direction == 1&& $posX<9&&$tableau_buisson[$posX+1][$posY]!=1&&$tableau_fighter[$posX+1][$posY]!=1){
                 $query->update()                   
                         ->set(['coordinate_x' => $posX +2])
                         ->execute();
                 $message  ='Vous allez en bas';
             }
-            else if ($direction == 2&& $posY<15&&$tableau_buisson[$posX][$posY+1]!=1&&$tableau_fighter[$posX][$posY+1]!=1){
+            else if ($direction == 2&& $posY<14&&$tableau_buisson[$posX][$posY+1]!=1&&$tableau_fighter[$posX][$posY+1]!=1){
                 $query->update()                   
                         ->set(['coordinate_y' => $posY +2])
                         ->execute();
@@ -212,6 +212,47 @@ class FightersTable extends Table {
           
           
       }
+    public function attaquer($notre_id,$pos_adv_x,$pos_adv_y) {        
+            
+         $query = $this->find('all')
+        ->where(['coordinate_x' => $pos_adv_x,'coordinate_y'=>$pos_adv_y]);
+        $query1 = $this->find('all')
+        ->where(['player_id' => $notre_id]);
+        foreach ($query as $row){
+            $level_adv= $row->level;
+            $health=$row->skill_health;
+        }
+        foreach ($query1 as $row){
+            $level_mon= $row->level;
+            $strength=$row->skill_strength;
+        }         
+        
+        
+        $aleat=rand(1,20);
+        if($aleat>10+$level_adv-$level_mon)
+        {
+            
+            
+           
+           if($health>$strength){
+           $query->update()                   
+                 ->set(['skill_health' =>$health-$strength ])
+                 ->execute(); 
+           $message="attaque réussie bravo!" ;
+           }
+           else{
+                    $query->delete()
+                    ->execute();
+           
+           }
+            
+        }
+        else {
+            $message="malheuresement l'attaque n'as pas réussie";
+            }
+        
+        return $message;
+    }
 }
 
 

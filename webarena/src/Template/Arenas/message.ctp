@@ -3,6 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<div class="crier form">
+<?= $this->Flash->render() ?>
+<?= $this->Form->create('envoyer') ?>
+    <fieldset>
+      
+        <legend><?= __("Crier"); ?></legend>
+        
+         <?= $elem8; ?>  </br>
+         
+          <?= $this->Form->control('cri'); ?>
+         
+        <?=  $this->Form->hidden('choix',['value' =>3]); ?>
+    </fieldset>
+    
+<?= $this->Form->button(__('crier')); 
+
+
+ 
+?>
+    
+<?= $this->Form->end() ?>
+
+
+
 
 <div class="message form">
 <?= $this->Flash->render() ?>
@@ -46,6 +70,9 @@
     
 <?= $this->Form->end() ?>
    
+
+
+
 
 <br/>
 

@@ -19,5 +19,9 @@ class EventsTable extends Table {
           $query = $this->find('all');
             return ($query->toArray());
     }
-   
+       
+        public function fairelecri(){
+          $query = $this->find('all');
+            
+    }
 }
