@@ -411,6 +411,9 @@ public function createfighter()
       // Creation nouveau combatant
       
       $this->loadModel('Fighters');
+      $this->loadModel('Surroundings');
+      $this->set('posx', $this->Surroundings->positionx());
+      $this->set('posy', $this->Surroundings->positiony());
       $player_id= $this->Auth->user('id');
       $this->set('player_id', $this->Auth->user('id'));
       $this->set('fighter_id', $this->request->session()->read('Fighters.id'));
