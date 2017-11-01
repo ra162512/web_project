@@ -254,6 +254,40 @@ class FightersTable extends Table {
                             
          
     }
+    
+    
+    public function upgradeCaracteristics($id, $selection){
+          
+          $query = $this->find('all')
+                ->select(['skill_sight','skill_strength','skill_health','level'])
+                ->where(['player_id' => $id]);
+                  foreach ($query as $row){
+            $skill_stre = $row->skill_strength;
+            $skill_hea = $row->skill_health;
+            $skill_sig=$row->skill_sight;
+            $level=$row->level;
+        }    
+          if (selection==1){
+          $query->update()                   
+                        ->set(['skill_strength' => $skill_stre +1])
+                  ->set(['level' => $level +1])
+                        ->execute();
+          }
+          if (selection==2){
+          $query->update()                   
+                        ->set(['skill_health' => $skill_hea +1])
+                        ->set(['level' => $level +1])
+                        ->execute();
+          }
+          if (selection==3){
+          $query->update()                   
+                        ->set(['skill_sight' => $skill_sig +1])
+                  ->set(['level' => $level +1])
+                        ->execute();
+          }
+          
+      }
+
 
     public function recuperernom($listid){
         $listname=array();
