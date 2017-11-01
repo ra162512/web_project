@@ -29,7 +29,7 @@ echo $this->Form->end();
  <?php   if($choix==1){
 echo $this->Form->create($particularRecord, ['enctype' => 'multipart/form-data']);
 echo $this->Form->input('upload', ['type' => 'file']);
-$this->Form->hidden('choix',['value' => 2]);
+echo $this->Form->hidden('choix',['value' => 2]);
 echo $this->Form->button('Change your avatar');
 echo $this->Form->end(); 
      ?>
@@ -43,15 +43,31 @@ echo $this->Form->end();
     </tr>
 <br>
     
-   
+   <?php   if ($xp/4-$level<=0){?>
 
-        <h3> You need <?= (4-($xp/4)) ?>  more xp </h3>
+        <h3> You need <?= 1-($xp/4-$level) ?>  more xp </h3>
         <br>
     
-
+  <?php }
+     ?>
 
 
 	
 </div>
-     <?php }
+ <?php   if ($xp/4-$level>=0){
+echo $this->Form->create('Ameliorer1');
+echo $this->Form->hidden('choix',['value' => 3]);
+echo $this->Form->button('Upgrade strength');
+echo $this->Form->end();
+
+echo $this->Form->create('Ameliorer2');
+echo $this->Form->hidden('choix',['value' => 4]);
+echo $this->Form->button('Upgrade health');
+echo $this->Form->end();
+
+echo $this->Form->create('Ameliorer3');
+echo $this->Form->hidden('choix',['value' => 5]);
+echo $this->Form->button('Upgrade sight');
+echo $this->Form->end();
+ }}
      ?>
