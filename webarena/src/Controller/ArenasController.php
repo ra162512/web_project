@@ -88,10 +88,11 @@ class ArenasController extends AppController {
                       
                           
 			  if (!empty($this->request->data['upload']['name'])) {
-                                $file = $this->request->data['upload']; //put the data into a var for easy use
-                          
-				$ext = substr(strtolower(strrchr($file['name'], '.')), 1); //get the extension
-				$arr_ext = array('jpg', 'jpeg', 'gif', 'png'); //set allowed extensions
+                                $file = $this->request->data['upload']; 
+                                //Récupere l'extension
+				$ext = substr(strtolower(strrchr($file['name'], '.')), 1);
+                                //Verifie l'extention
+				$arr_ext = array('jpg', 'jpeg', 'gif', 'png'); 
 	
 				
 				
