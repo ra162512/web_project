@@ -253,12 +253,17 @@ class ArenasController extends AppController {
                 }
                  }
                 if ($indice==10){
+                    $i=0;
+                    $j=0;
                     $this->Surroundings->deleteSurrounds();
-                    for ($i=0;$i<rand(0,10); $i++){
-                        for ($j=0; $j<rand(0,15); $j++){
+                    
+                    for ($i;$i<rand(0,10); $i++){
+                        for ($j; $j<rand(0,15); $j++){
+                            if($tableauposition_fighters[$i][$j]==0 || $tableauposition_tools[$i][$j]==0){
                             $this->Surroundings->buiss();
                             $this->Surroundings->pierre();
                             $this->Surroundings->arbre();
+                            }
                         }
                     }
                     
