@@ -103,12 +103,14 @@ class ArenasController extends AppController {
                                                                                 
                         
                      }	
-                   if($choix==3){upgradeCaracteristics($fighter_id, 1);}
-                   if($choix==4){upgradeCaracteristics($fighter_id, 2);}
-                   if($choix==5){upgradeCaracteristics($fighter_id, 3);}
+                   if($choix==3){$this->Fighters->upgradeCaracteristics($fighter_id, 1);
+                                $allo=$fighter_id;
+                   }
+                   if($choix==4){$this->Fighters->upgradeCaracteristics($fighter_id, 2);}
+                   if($choix==5){$this->Fighters->upgradeCaracteristics($fighter_id, 3);}
                    
 		}
-
+                $this->set('allo',$allo);
                 $this->set('choix',$choix);
     }
 
@@ -159,6 +161,7 @@ class ArenasController extends AppController {
         $fighters=$this->Fighters->getallfightersall();
         $surroundings = $this->Surroundings->allCases();
         $tableau_type_surround[10][15]=array();
+        $tableau_type_tools[10][15]=array();
         $tableauposition_surround[10][15]=array();
         $tableauposition_tools[10][15]=array();
         $tableauposition_fighters[10][15]=array();  
@@ -168,7 +171,7 @@ class ArenasController extends AppController {
              for($j=0;$j<15;$j++)
             { 
             $tableauposition_surround[$i][$j]=0;
-             $tableau_type_surround[10][15]=" ";
+             
               $tableauposition_fighters[$i][$j]=0;
             
             }
@@ -181,7 +184,16 @@ class ArenasController extends AppController {
                     $positiony_sur=$surroundings[$i]->coordinate_y; 
                     $tableauposition_surround[$positionx_sur-1][$positiony_sur-1]=1;
                     $tableau_type_surround[$positionx_sur-1][$positiony_sur-1]=$surroundings[$i]->type;
+                    
                 }
+                 for($i=0;$i<count($tools);$i++){
+
+                  $positionx_tool=$tools[$i]->coordinate_x;
+                    $positiony_tool=$tools[$i]->coordinate_y;
+                    $tableauposition_tools[$positionx_tool-1][$positiony_tool-1]=1;
+                    $tableau_type_tools[$positionx_sur-1][$positiony_sur-1]=$tools[$i]->type;
+                
+             }        
                 
         for($i=0;$i<count($fighters);$i++)
                 {   
@@ -305,7 +317,7 @@ class ArenasController extends AppController {
                   $positionx_tool=$tools[$i]->coordinate_x;
                     $positiony_tool=$tools[$i]->coordinate_y;
                     $tableauposition_tools[$positionx_tool-1][$positiony_tool-1]=1;
-          
+                    $tableau_type_tools[$positionx_tool-1][$positiony_tool-1]=$tools[$i]->type;
                 
              }
               for($i=0;$i<count($fighters);$i++)
@@ -322,6 +334,7 @@ class ArenasController extends AppController {
         $this->set('tab_pos_sur',$tableauposition_surround);
         $this->set('tab_type_sur', $tableau_type_surround);
         $this->set('tab_pos_tool',$tableauposition_tools);
+        $this->set('tab_type_tool',$tableau_type_tools);
         $this->set('tab_pos_fig',$tableauposition_fighters);
         $this->set('sight',$sight);
         $this->set('pos_cour',$position_courante);

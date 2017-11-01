@@ -7,7 +7,7 @@
 	
 	<?php 
         
-        
+echo "le allo est".$allo;
 echo $this->Form->create('Envoyer');
 echo $this->Form->select('namefighter',$list);
 echo $this->Form->hidden('choix',['value' => 1]);

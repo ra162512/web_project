@@ -37,7 +37,15 @@ for ($i=0; $i<10; $i++){
                                     }
                         else if($tab_pos_tool[$i][$h]==1)
                                     {
+                                         if($tab_type_tool[$i][$h]=="epee"){
                                          echo $this->Html->image('epee2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }
+                                         if($tab_type_tool[$i][$h]=="coeur"){
+                                         echo $this->Html->image('coeur1.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }
+                                          if($tab_type_tool[$i][$h]=="vue"){
+                                         echo $this->Html->image('vue1.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }                                                                           
                                     }
                         else        {
                                         echo $this->Html->image('herbe1.jpg', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
@@ -59,7 +67,16 @@ for ($i=0; $i<10; $i++){
                                     }
                         else if($tab_pos_tool[$i][$h]==1)
                                     {
-                                     echo $this->Html->image('epee3.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                           
+                            if($tab_type_tool[$i][$h]=="epee"){
+                                         echo $this->Html->image('epee3.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                     }
+                            if($tab_type_tool[$i][$h]=="coeur"){
+                                         echo $this->Html->image('coeur2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }
+                           if($tab_type_tool[$i][$h]=="vue"){
+                                         echo $this->Html->image('vue2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                             }   
                                     }
                         else{
                                     echo $this->Html->image('herbe2.jpg', ['alt'=>'Cake0', 'height' => 60, 'width'=>60]);
@@ -84,7 +101,15 @@ for ($i=0; $i<10; $i++){
                             }
                           else if($tab_pos_tool[$i][$h]==1)
                             {
-                                    echo $this->Html->image('epee3.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                      if($tab_type_tool[$i][$h]=="epee"){
+                                         echo $this->Html->image('epee3.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                    }
+                                     if($tab_type_tool[$i][$h]=="coeur"){
+                                         echo $this->Html->image('coeur2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }
+                                    if($tab_type_tool[$i][$h]=="vue"){
+                                         echo $this->Html->image('vue2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }                                       
                             }
                          else
                             {
@@ -108,7 +133,15 @@ for ($i=0; $i<10; $i++){
                             }
                          else if($tab_pos_tool[$i][$h]==1)
                             {
-                                    echo $this->Html->image('epee2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                               if($tab_type_tool[$i][$h]=="epee"){
+                                         echo $this->Html->image('epee2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                    }
+                                if($tab_type_tool[$i][$h]=="coeur"){
+                                         echo $this->Html->image('coeur1.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }
+                                if($tab_type_tool[$i][$h]=="vue"){
+                                         echo $this->Html->image('vue1.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                                            }   
                             }
                         else
                             {
