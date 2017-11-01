@@ -25,30 +25,44 @@ class SurroundingsTable extends Table {
         return ($query->toArray());    
     }
     
-    public function buissa() {
+    public function buiss() {
         $x = rand(0,10);
         $y = rand(0,15);
         $query = $this->find('all');
         
-        if ($query->count()<=30){
+        if ($query->count()<=10){
         $query->insert(['type','coordinate_x','coordinate_y'])
-                ->values(['type' => 'buisson3.png', 'coordinate_x' => $x, 'coordinate_y' => $y])
+                ->values(['type' => 'buisson', 'coordinate_x' => $x, 'coordinate_y' => $y])
+                ->execute(); 
+        }      
+    }
+      
+    public function pierre() {
+        $x = rand(0,10);
+        $y = rand(0,15);
+        $query = $this->find('all');
+        
+        if ($query->count()<=10){
+        $query->insert(['type','coordinate_x','coordinate_y'])
+                ->values(['type' => 'pierre', 'coordinate_x' => $x, 'coordinate_y' => $y])
                 ->execute(); 
         }      
     }
     
-    public function buissb() {
+    public function arbre() {
         $x = rand(0,10);
         $y = rand(0,15);
-        
         $query = $this->find('all');
         
-        if ($query->count()<=30){
+        if ($query->count()<=10){
         $query->insert(['type','coordinate_x','coordinate_y'])
-                ->values(['type' => 'buisson4.png', 'coordinate_x' => $x, 'coordinate_y' => $y])
+                ->values(['type' => 'arbre', 'coordinate_x' => $x, 'coordinate_y' => $y])
                 ->execute(); 
-        }
+        }      
     }
-
-
+    public function deleteSurrounds(){
+        $query = $this->find('all');
+        $query->delete()->execute();
+    }
+    
 }

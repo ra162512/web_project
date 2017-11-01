@@ -34,6 +34,10 @@ for ($i=0; $i<10; $i++){
                                                 echo $this->Html->image('arbre1vrai.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
                                         
                                                      }
+                                                     if($tab_type_sur[$i][$h]=="pierre"){
+                                                echo $this->Html->image('pierre1.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                        
+                                                     }
                                     }
                         else if($tab_pos_tool[$i][$h]==1)
                                     {
@@ -55,6 +59,9 @@ for ($i=0; $i<10; $i++){
                                                                             }
                                         if($tab_type_sur[$i][$h]=="arbre"){
                                                  echo $this->Html->image('arbre2vrai.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                }
+                                                if($tab_type_sur[$i][$h]=="pierre"){
+                                                 echo $this->Html->image('pierre2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
                                                 }
                                     }
                         else if($tab_pos_tool[$i][$h]==1)
@@ -80,7 +87,10 @@ for ($i=0; $i<10; $i++){
                                     }
                                      if($tab_type_sur[$i][$h]=="arbre"){
                                                  echo $this->Html->image('arbre2vrai.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
-                                                }                         
+                                                } 
+                                                if($tab_type_sur[$i][$h]=="pierre"){
+                                                 echo $this->Html->image('pierre2.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                }
                             }
                           else if($tab_pos_tool[$i][$h]==1)
                             {
@@ -103,7 +113,10 @@ for ($i=0; $i<10; $i++){
                                     }
                                     if($tab_type_sur[$i][$h]=="arbre"){
                                                  echo $this->Html->image('arbre1vrai.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
-                                                }   
+                                                } 
+                                    if($tab_type_sur[$i][$h]=="pierre"){
+                                                 echo $this->Html->image('pierre1.png', ['alt'=>'Cake2', 'height' => 60, 'width'=>60]);
+                                                }
                                    
                             }
                          else if($tab_pos_tool[$i][$h]==1)
@@ -172,6 +185,10 @@ for ($i=0; $i<10; $i++){
        }
        
        ?>
+        <?php echo  $this->Form->postButton('Créer des Objets',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'5']]);
+        ?>
+        <?php echo  $this->Form->postButton('Générer un décor',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'10']]);
+        ?>
     </section>
 </section>
 
