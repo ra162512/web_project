@@ -156,6 +156,7 @@ class ArenasController extends AppController {
                                  $this->Fighters->upgradeCaracteristics($fighter_id, 3);}
                    
 		}
+                
                 $this->set('choix',$choix);
     }
 
