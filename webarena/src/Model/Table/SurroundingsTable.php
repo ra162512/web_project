@@ -24,7 +24,37 @@ class SurroundingsTable extends Table {
         
         return ($query->toArray());    
     }
-    
+     public function positionx(){
+            $position=array();
+      $query = $this->find()
+    ->select(['coordinate_x','coordinate_y']);
+                
+        foreach ($query as $row) {
+         
+            $position=$row->coordinate_x;
+            
+                            
+      }
+
+      return $position;
+        
+    }
+      public function positiony(){
+            $position=array();
+      $query = $this->find()
+    ->select(['coordinate_y']);
+                
+        foreach ($query as $row) {
+         
+            $position=$row->coordinate_y;
+            
+                            
+      }
+
+      return $position;
+        
+    }
+     
     public function buiss() {
         $x = rand(1,10);
         $y = rand(1,15);

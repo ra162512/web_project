@@ -19,7 +19,7 @@ class ToolsTable extends Table{
           $query = $this->find('all');
             return ($query->toArray());
     }
-        public function recuperertool($postoo)
+        public function recupererbonustool($postoo)
     {
         $postooX=$postoo[0];
         $postooY=$postoo[1];
@@ -34,6 +34,21 @@ class ToolsTable extends Table{
 
        
     }
+             public function recuperertypetool($postoo)
+    {
+        $postooX=$postoo[0];
+        $postooY=$postoo[1];
+        $query=$this->find('all')
+                ->select(['type'])
+                ->where(['coordinate_x' => $postooX, 'coordinate_y'=>$postooY]);
+               foreach ($query as $row){
+            $type = $row->type;
+            
+        }    
+         return $type;
+         
+       
+    }   
 
     public function effacertool($postoo,$player_id)
     {

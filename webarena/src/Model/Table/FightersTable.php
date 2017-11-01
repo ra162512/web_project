@@ -324,7 +324,7 @@ class FightersTable extends Table {
     }
     
      
-          public function attraper($id,$position,$bonus){
+          public function attraper($id,$position,$bonus,$type){
           
           $posX=$position[0];
           $posY=$position[1];
@@ -335,14 +335,28 @@ class FightersTable extends Table {
             $skill_stre = $row->skill_strength;
             $skill_hea = $row->skill_health;
             $skill_sig=$row->skill_sight;
-        }    
-          
-          $query->update()                   
+        }
+        
+        if($type=="epee")
+                 {$query->update()                   
                         ->set(['skill_strength' => $skill_stre +$bonus])
                         ->execute();
-          
+                 }
+        if($type=="vue")
+                 {$query->update()                   
+                        ->set(['skill_sight' => $skill_sig +$bonus])
+                        ->execute();
+                 }
+        if($type=="coeur")
+                 {$query->update()                   
+                        ->set(['skill_health' => $skill_hea +$bonus])
+                        ->execute();
+                 }                 
+                 
           
       }
+      
+      
     public function attaquer($notre_id,$pos_adv_x,$pos_adv_y) {        
             
          $query = $this->find('all')

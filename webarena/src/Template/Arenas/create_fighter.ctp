@@ -3,8 +3,10 @@
 <?php
 
     $id = rand(0,100000);
+    do{
     $x = rand(1,10);
     $y = rand(1,15);
+    }while($x==$posx && $y=posy);
     $defaultLevel = 1;
     $defaultXP = 0;
     $defaultSight = 2;
