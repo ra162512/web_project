@@ -160,7 +160,101 @@ class FightersTable extends Table {
         
      return $id;
 }
-     
+      public function find_sight($name){
+                       
+    
+      $query = $this->find()
+    ->select(['skill_sight',])
+    ->where(['name' => $name]);
+                
+        foreach ($query as $row) {
+          $sight=$row->skill_sight;
+                            
+          
+    }
+        
+     return $sight;
+                            
+         
+    }
+    
+    
+    
+    
+    
+    
+     public function find_strength($name){
+                       
+    
+      $query = $this->find()
+    ->select(['skill_strength',])
+    ->where(['name' => $name]);
+                
+        foreach ($query as $row) {
+          $skill_strength=$row->skill_strength;
+                            
+          
+    }
+        
+     return $skill_strength;
+                            
+         
+    }
+       public function find_health($name){
+                       
+    
+      $query = $this->find()
+    ->select(['skill_health',])
+    ->where(['name' => $name]);
+                
+        foreach ($query as $row) {
+          $skill_health=$row->skill_health;
+                            
+          
+    }
+        
+     return $skill_health;
+                            
+         
+    }
+    
+    
+    
+    public function find_xp($name){
+                       
+    
+      $query = $this->find()
+    ->select(['xp',])
+    ->where(['name' => $name]);
+                
+        foreach ($query as $row) {
+          $xp=$row->xp;
+                            
+          
+    }
+        
+     return $xp;
+                            
+         
+    }
+       public function find_level($name){
+                       
+    
+      $query = $this->find()
+    ->select(['level',])
+    ->where(['name' => $name]);
+                
+        foreach ($query as $row) {
+          $level=$row->level;
+                            
+          
+    }
+        
+     return $level;
+                            
+         
+    }
+
     public function recuperernom($listid){
         $listname=array();
         for($i=0;$i<count($listid);$i++){
