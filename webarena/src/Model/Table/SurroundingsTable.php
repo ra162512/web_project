@@ -26,8 +26,8 @@ class SurroundingsTable extends Table {
     }
     
     public function buiss() {
-        $x = rand(0,10);
-        $y = rand(0,15);
+        $x = rand(1,10);
+        $y = rand(1,15);
         
         $query = $this->find('all');
         
@@ -39,8 +39,8 @@ class SurroundingsTable extends Table {
     }
       
     public function pierre() {
-        $x = rand(0,10);
-        $y = rand(0,15);
+        $x = rand(1,10);
+        $y = rand(1,15);
         $query = $this->find('all');
         
         if ($query->count()<=10){
@@ -51,8 +51,8 @@ class SurroundingsTable extends Table {
     }
     
     public function arbre() {
-        $x = rand(0,10);
-        $y = rand(0,15);
+        $x = rand(1,10);
+        $y = rand(1,15);
         $query = $this->find('all');
         
         if ($query->count()<=10){
@@ -61,6 +61,7 @@ class SurroundingsTable extends Table {
                 ->execute(); 
         }      
     }
+    
     public function deleteSurrounds(){
         $query = $this->find('all');
         $query->delete()->execute();

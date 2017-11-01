@@ -62,47 +62,39 @@ class ToolsTable extends Table{
                     ->execute();
                           
     }
-    public function createTools(){
-        $query = $this->query();
-        $query2 = $this->query();
-        $query3 = $this->query();
-        $query4 = $this->query();
-        $query5 = $this->query();
-        $query6 = $this->query();
-        $query7 = $this->query();
-        $query8 = $this->query();
-        $query9 = $this->query();
-        $query10 = $this->query();
+        public function coeur() {
         
+        $query = $this->find('all');
+        
+        if ($query->count()<=10){
         $query->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'epee3.png','bonus'=>1, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query2->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'superepee2.png','bonus'=>2, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query3->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'armehast2.png','bonus'=>3, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query4->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'hache1.png','bonus'=>4, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query5->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'vue1.png','bonus'=>2, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query6->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'epee2.png','bonus'=>1, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query7->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'vue2.png','bonus'=>1, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query8->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'coeur2.png','bonus'=>3, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query9->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'coeur1.png','bonus'=>2, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
-        $query10->insert(['type','bonus','coordinate_x','coordinate_y'])
-                ->values(['type' => 'vue1.png','bonus'=>2, 'coordinate_x' => rand(0,10), 'coordinate_y' => rand(0,15)])
-                ->execute();
+                ->values(['type' => 'coeur','bonus'=>1, 'coordinate_x' => rand(1,10), 'coordinate_y' => rand(1,15)])
+                ->execute(); 
+        }      
+    }
+      
+    public function vue() {
+        $query = $this->find('all');
+        
+        if ($query->count()<=10){
+        $query->insert(['type','bonus','coordinate_x','coordinate_y'])
+                ->values(['type' => 'vue','bonus'=>1, 'coordinate_x' => rand(1,10), 'coordinate_y' => rand(1,15)])
+                ->execute(); 
+        }      
+    }
+    
+    public function epee() {
+        $query = $this->find('all');
+        
+        if ($query->count()<=10){
+        $query->insert(['type','bonus','coordinate_x','coordinate_y'])
+                ->values(['type' => 'epee','bonus'=>1, 'coordinate_x' => rand(1,10), 'coordinate_y' => rand(1,15)])
+                ->execute(); 
+        }      
+    }
+    
+    public function deleteTools(){
+        $query = $this->find('all');
+        $query->delete()->execute();
     }
 }

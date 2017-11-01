@@ -156,7 +156,7 @@ class ArenasController extends AppController {
                                  $this->Fighters->upgradeCaracteristics($fighter_id, 3);}
                    
 		}
-                $this->set('allo',$allo);
+                
                 $this->set('choix',$choix);
     }
 
@@ -257,7 +257,22 @@ class ArenasController extends AppController {
                 $this->Tools-> effacertool($position);
                 
             }
-           
+            if ($indice==5){
+                    $i=0;
+                    $j=0;
+                    $this->Tools->deleteTools();
+                    
+                    for ($i;$i<rand(1,10); $i++){
+                        for ($j; $j<rand(1,15); $j++){
+                            if($tableauposition_fighters[$i][$j]==0 || $tableauposition_surround[$i][$j]==0){
+                            $this->Tools->coeur();
+                            $this->Tools->vue();
+                            $this->Tools->epee();
+                            }
+                        }
+                    }
+                    
+                }
             if($indice==6){
                 
                 $position_advX=$position[0]+1;
@@ -314,8 +329,8 @@ class ArenasController extends AppController {
                     $j=0;
                     $this->Surroundings->deleteSurrounds();
                     
-                    for ($i;$i<rand(0,10); $i++){
-                        for ($j; $j<rand(0,15); $j++){
+                    for ($i;$i<rand(1,10); $i++){
+                        for ($j; $j<rand(1,15); $j++){
                             if($tableauposition_fighters[$i][$j]==0 || $tableauposition_tools[$i][$j]==0){
                             $this->Surroundings->buiss();
                             $this->Surroundings->pierre();

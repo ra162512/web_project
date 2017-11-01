@@ -178,13 +178,25 @@ for ($i=0; $i<10; $i++){
        
     </section>    
     <section style="grid-column: 2; grid-row: 1;">
-       
-   
-      <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'0']]);       ?>
-      <?php       echo  $this->Form->postButton('down',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'1']]);     ?>
-      <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'2']]);    ?>
-      <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'3']]);     ?>
-      <?php       echo $mess;       ?>
+        <section style="display :grid; grid-template-columns: 83px 83px 83px; grid-template-rows: 30px 30px 30px ;">
+
+            <section style="grid-column: 2; grid-row: 1;">          
+                <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'0']]);       ?>
+            </section>
+            <section style="grid-column: 2; grid-row: 3;">     
+                <?php       echo  $this->Form->postButton('down',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'1']]);     ?>
+            </section>
+            <section style="grid-column: 3; grid-row: 2;">    
+                <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'2']]);    ?>
+            </section>
+            <section style="grid-column: 1; grid-row: 2;">  
+                <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'3']]);     ?>
+            </section>
+        </section>
+            <?php echo '<br/>'; ?>
+            <?php echo $mess; ?>
+            <?php echo '<br/>'; ?>
+            
                
  <?php
        if($tab_pos_tool[$posX][$posY]==1){
