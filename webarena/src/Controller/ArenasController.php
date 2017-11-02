@@ -21,9 +21,6 @@ class ArenasController extends AppController {
         
     }
 
-    public function sight() {
-        
-    }
 
     public function diary() {
         
@@ -163,7 +160,7 @@ class ArenasController extends AppController {
  
   
   
-    public function arena(){
+    public function sight(){
         
         
           $mess="";
