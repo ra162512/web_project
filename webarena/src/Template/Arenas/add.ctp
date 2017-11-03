@@ -1,14 +1,23 @@
-
+<title>Registration</title>
 <div class="players form">
+
 <?= $this->Form->create($player) ?>
     <fieldset>
-        <legend><?= __('Pour vous inscrire remplissez le formulaire') ?></legend>
-        <?= $this->Form->control('email') ?>
+        <legend><?= __('Please, complete the form to register you') ?></legend>
+
+<br/>
+<br/>
+    
+      <?= $this->Form->control('email', [ 'class' => 'form-control']) ?>
         </br>
-        <?= $this->Form->control('password') ?>
+        <?= $this->Form->control('password',  [ 'class' => 'form-control' ]) ?>
         </br>      
     </fieldset>
-<?= $this->Form->button(__('Ajouter')); ?> 
+
+    
+    <br/>
+
+ 
+<?= $this->Form->button('Add', [ 'class' => 'btn btn-primary btn-block'])?>
 <?= $this->Form->end() ?> 
 </div>
-

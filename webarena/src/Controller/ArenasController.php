@@ -547,8 +547,8 @@ public function createfighter()
         
         $this->loadModel('Messages');
        $message = $this->Messages->newEntity();
-       $message2="voulez vous envoyer un message?";
-       $message3="voulez vous envoyer un cri?";
+       $message2="Do you want to send a message ?";
+       $message3="Do you want to scream ?";
       if ($this->request->is('post')) 
            {
           $choix= $this->request->getData('choix');

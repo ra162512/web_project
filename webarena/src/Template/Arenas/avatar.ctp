@@ -1,4 +1,4 @@
-<?php $this->assign('title', "Custom Fighter");?>
+<title>CustomFighter</title>
 
 <div class="large-4 medium-4 large-offset-4 medium-offset-4 columns">
 	<div class="panel">

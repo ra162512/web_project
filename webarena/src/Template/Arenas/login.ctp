@@ -1,29 +1,21 @@
-<!-- src/Template/Users/login.ctp -->
 
-<title>LOGIN</title>
+<title>Login</title>
 
 <div class="players form">
 <?= $this->Flash->render() ?>
-<?php echo $this->Form->create('BriceCake', array(
-	'inputDefaults' => array(
-		'div' => 'form-group',
-		'label' => array(
-			'class' => 'col col-md-3 control-label'
-		),
-		'wrapInput' => 'col col-md-9',
-		'class' => 'form-control'
-	),
-	'class' => 'well form-horizontal'
-)); ?>
+<?php echo $this->Form->create(); ?>
     <fieldset>
       
         <legend><?= __("Merci de rentrer votre email et mot de passe") ?></legend>
-        
-        <?= $this->Form->control('email') ?>
-        <?= $this->Form->control('password') ?>
+      
+        <?= $this->Form->control('email', [ 'class' => 'form-control']) ?>
+          
+       <br/>
+       
+        <?= $this->Form->control('password',  [ 'class' => 'form-control' ]) ?>
+        <small id="emailHelp" class="form-text text-muted">Never Give your password to any other player</small>
     </fieldset>
-<?= $this->Form->button(__('Se Connecter')); 
-
- 
-?>
+    <br/>
+<?= $this->Form->button('Login', [ 'class' => 'btn btn-primary'])?>
+<?= $this->Form->end() ?>
     

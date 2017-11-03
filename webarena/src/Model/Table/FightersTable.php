@@ -34,9 +34,6 @@ class FightersTable extends Table {
         $posX = 0;
         $posY = 0;
         
-        
-        
-        
         $query = $this->find('all')
                 ->select(['coordinate_x','coordinate_y'])
                 ->where(['player_id' => $id]);
@@ -78,58 +75,46 @@ class FightersTable extends Table {
         
         public function recupererfightervision($id){
             
-                    $query = $this->find('all')
+            $query = $this->find('all')
                 ->select(['skill_sight'])
                 ->where(['player_id' => $id]);
                     foreach ($query as $row){
             $sight = $row->skill_sight;
        
         }
-                return $sight;
+            return $sight;
         }
-        
-        
-        
-                   
-        
+       
     public function getallFighterssender($id_receiver) {
 
                
-      $listeplayer=array();
-       $i=0;
+        $listeplayer=array();
+        $i=0;
         $query = $this->find()
                 ->select(['name',])
                 ->where(['player_id' => $id_receiver]);
-                
         
         foreach ($query as $row) {
            $listeplayer[$i]=$row->name;
-           $i=$i+1;
-                            
-          
+           $i=$i+1;                                
     }
-     return $listeplayer;
-
+    return $listeplayer;
 }
    
     public function getallFightersreceiver1($id_receiver) {
 
                
-      $listeplayer=array();
-       $i=0;
+        $listeplayer=array();
+        $i=0;
         $query = $this->find()
                 ->select(['name',])
-                ->where(['player_id !=' => $id_receiver]);
-                
+                ->where(['player_id !=' => $id_receiver]);               
         
         foreach ($query as $row) {
            $listeplayer[$i]=$row->name;
-           $i=$i+1;
-                            
-          
+           $i=$i+1;                                    
     }
      return $listeplayer;
-
 }
 
     public function getallFighters() {               
@@ -142,8 +127,8 @@ class FightersTable extends Table {
           $i=$i+1;                                    
         }
         return $listeplayer;
-
 }
+
     public function getallFightersall() {                 
         $query = $this->find('all');
         return ($query->toArray());

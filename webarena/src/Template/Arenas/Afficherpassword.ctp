@@ -1,11 +1,12 @@
-<h4>Récupération de votre mot de passe</h4>
+<title>Newpassword</title>
+<h4>Password Recovery</h4>
 
     <?php echo $this->Form->create('afficherpassword');
-    echo $this->Form->input('email', array("placeholder" => "Username", ['type' => 'email']));?>
+    echo $this->Form->input('email',[ 'class' => 'form-control']);?>
 
-    <?= $this->Form->submit('Récuperer mot de passe', ['type' => 'submit']);?>
+    <?= $this->Form->submit('Recover your password', [ 'class' => 'btn btn-primary ']);?>
     <?= $this->Form->end();?>
 
-    <h2> Informations </h2>
+    <h2> Information </h2>
    
-    <?php echo "votre nouveau mot de passe est: "; echo '<b>'.$password;?>
+    <?php echo "Your password is: "; echo '<b>'.$password;?>

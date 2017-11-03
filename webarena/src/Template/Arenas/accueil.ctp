@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Simply Me</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<title>Home</title>
+<body>
   <style>
   .bg-1 { 
      background-image:url('http://www.journaldugeek.com/files/2013/07/Fight-Club.jpg'); 
@@ -33,8 +27,7 @@ color: #ffffff;
       padding-bottom: 70px;
   }
   </style>
-</head>
-<body>
+
 
 <div class="container-fluid bg-1 text-center">
   
@@ -47,7 +40,7 @@ color: #ffffff;
                     
 <button type="button" class="btn btn-danger" name="createFighter" value="Create Fighter" onclick="javascript:location.href='Fighter'">Create Fighter</button>
 
- <button type="button" class="btn btn-success"  name="play" value="Play" onclick="javascript:location.href='arena'">Play</button>
+ <button type="button" class="btn btn-success"  name="play" value="Play" onclick="javascript:location.href='sight'">Play</button>
 
 </div>
 
@@ -56,12 +49,3 @@ color: #ffffff;
 </div>
 
 </body>
-</html>
-
-
-
-
-
-
-
-

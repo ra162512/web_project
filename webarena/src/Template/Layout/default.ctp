@@ -1,6 +1,6 @@
 <?php echo $this->Html->docType();?>
 
-<html lang="fr">
+<html lang="en">
 
     <?php echo $this->Html->charset(); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,11 +14,6 @@
     <?php echo $this->fetch("css"); ?>
 
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   
   <meta charset="utf-8">
   
@@ -46,7 +41,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="accueil">Home</a></li>
             <li><a href='connection'>Connexion</a></li>
-            <li><a href='create_fighter'>Fighter</a></li>
+            <li><a href='fighter'>Fighter</a></li>
             <li><a href='sight'>Vision</a></li>
             <li><a href='diary'>Journal</a></li>
             <li><a href='nouvelleguilde'>New guilde</a></li>
@@ -54,6 +49,14 @@
             <li><a href='logout'>Deconnexion</a></li>
             
           </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <div class="inset">
+                  <img src="http://icdn.pro/images/fr/c/l/club-fight-savon-icone-7160-128.png",  height="55" width="55">
+                </div>
+              </li>
+            </ul>
         </div>
          
       </div>
@@ -77,9 +80,11 @@
       <br/>
       <br/>
       <br/>
+      
       <div align="right">
-      <h5> Brice Koenig <br/> Yacine   <br/> Raphael attali  <br/>  Coraline Amemoutou<br/> option B & F </h5>
+      <h5> &diams; Brice Koenig <br/> &diams; Yacine Zidi <br/> &diams; Raphael Attali  <br/> &diams; Coraline Amemoutou<br/> option A & B & F </h5>
+      <a href='https://github.com/ra162512/web_project/commits/master'>Versions.log  </a>
       <h4>    <?php echo $message;?> </h4>
-      </div>      
+      </div>
   </footer>
 </html>

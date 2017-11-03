@@ -20,8 +20,8 @@ class EventsTable extends Table {
             return ($query->toArray());
     }
        
-        public function fairelecri(){
-          $query = $this->find('all');
+    public function fairelecri(){
+        $query = $this->find('all');
             
     }
     public function allEvents_portee_devue($sight,$position){
@@ -30,8 +30,8 @@ class EventsTable extends Table {
         $tabevents=array();
         $i=0;
         $heure = date("H");
-       $query = $this->find('all')
-               ->order(['date' => 'ASC']);
+        $query = $this->find('all')
+                ->order(['date' => 'ASC']);
              
        foreach($query as $row){
            

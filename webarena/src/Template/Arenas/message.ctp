@@ -1,23 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+<title>Messaging</title>
 <div class="crier form">
 <?= $this->Flash->render() ?>
 <?= $this->Form->create('envoyer') ?>
     <fieldset>
       
-        <legend><?= __("Crier"); ?></legend>
+        <legend><?= __("Scream Action"); ?></legend>
         
          <?= $elem8; ?>  </br>
          
-          <?= $this->Form->control('cri'); ?>
+          <?= $this->Form->control('Message'); ?>
          
         <?=  $this->Form->hidden('choix',['value' =>3]); ?>
     </fieldset>
     
-<?= $this->Form->button(__('crier')); 
+<?= $this->Form->button(__('Scream')); 
 
 
  
@@ -33,17 +29,17 @@
 <?= $this->Form->create('envoyer') ?>
     <fieldset>
       
-        <legend><?= __("Boite de messagerie"); ?></legend>
+        <legend><?= __("Message Inbox"); ?></legend>
         
         <?= $elem1; ?>  </br>
-        <?= "choisissez votre personnage"; echo $this->Form->select('namefrom',$list); ?>
-         <?= "choisissez le personnage a qui envoyer"; echo $this->Form->select('namedest',$list1); ?>
-          <?= $this->Form->control('titre'); ?>
+        <?= "Choose your fighter"; echo $this->Form->select('namefrom',$list); ?>
+         <?= "Chose the fighter you want to send the message"; echo $this->Form->select('namedest',$list1); ?>
+          <?= $this->Form->control('title'); ?>
         <?= $this->Form->control('message'); ?>   
         <?=  $this->Form->hidden('choix',['value' => 1]); ?>
     </fieldset>
     
-<?= $this->Form->button(__('Envoyer')); 
+<?= $this->Form->button(__('Send')); 
 
 
  
@@ -58,15 +54,15 @@
 <?= $this->Form->create('recevoir') ?>
     <fieldset>
         
-        <?= "choisissez de quel personnage souhaitez vous lire les messages?"; echo $this->Form->select('namefrom',$list3); ?>
-      <?= "choisissez avec quel personnage?"; echo $this->Form->select('namewith',$list4); ?>
+        <?= "From who do you want to read the message ?"; echo $this->Form->select('namefrom',$list3); ?>
+      <?= "Choose with which fighter"; echo $this->Form->select('namewith',$list4); ?>
 
       <?=  $this->Form->hidden('choix',['value' =>2]); ?>
        
    
     </fieldset>
     
-<?= $this->Form->button(__('Lire'));  ?>
+<?= $this->Form->button(__('Read'));  ?>
     
 <?= $this->Form->end() ?>
    
@@ -103,4 +99,3 @@
           }
         ?>
 </div>
-

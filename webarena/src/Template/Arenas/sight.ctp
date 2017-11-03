@@ -1,4 +1,4 @@
-<title>Arena</title>
+<title>Sight</title>
 <?php  if($existe==1){  ?>
 <section style="display :grid; grid-template-columns: 950px 250px; grid-template-rows: 950px ;">
 
@@ -243,5 +243,3 @@ else{
     echo "veuillez creer un fighter pour jouer dans l'arène";
 
   }
- 
-

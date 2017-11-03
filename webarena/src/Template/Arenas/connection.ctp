@@ -1,5 +1,4 @@
-
-
+<title>Connexion</title>
 <body>
 
   <style>
@@ -29,8 +28,7 @@ color: #ffffff;
       padding-bottom: 70px;
   }
   </style>
-</head>
-<body>
+
 
 <div class="container-fluid bg-1 text-center">
   
@@ -89,8 +87,6 @@ color: #ffffff;
   </div>
 </div>
 
-</body>
-</html>
 
 
 </div>
