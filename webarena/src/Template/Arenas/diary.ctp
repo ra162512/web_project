@@ -11,6 +11,12 @@
 
     <title>Diary</title>
 
+  
+  
+  
+  
+  
+  
     <!-- Bootstrap core CSS -->
     <?php echo $this->Html->css('bootstrap.min'); ?>
     <?php echo $this->fetch("css"); ?>
@@ -19,6 +25,23 @@
 
   <body>
       <h1> DIARY </h1>
+      
+      
+        <?php 
+        for($i=0;$i<count($tab_event);$i++)
+        {  
+            echo $tab_event[$i]->name;
+            echo " a ";
+            echo $tab_event[$i]->date;
+            echo " en position x:  ";
+            echo $tab_event[$i]->coordinate_x; 
+            echo " y: ";
+            echo $tab_event[$i]->coordinate_y; 
+            echo "<br/>";
+        }
+    
+        
+        ?>
   </body>
   
 </html>

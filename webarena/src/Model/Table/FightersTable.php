@@ -329,12 +329,13 @@ class FightersTable extends Table {
           $posX=$position[0];
           $posY=$position[1];
           $query = $this->find('all')
-                ->select(['skill_sight','skill_strength','skill_health'])
+                ->select(['skill_sight','skill_strength','skill_health','name'])
                 ->where(['player_id' => $id]);
                   foreach ($query as $row){
             $skill_stre = $row->skill_strength;
             $skill_hea = $row->skill_health;
             $skill_sig=$row->skill_sight;
+            $name=$row->name;
         }
         
         if($type=="epee")
@@ -352,8 +353,8 @@ class FightersTable extends Table {
                         ->set(['skill_health' => $skill_hea +$bonus])
                         ->execute();
                  }                 
-                 
-          
+            $infosevent=array($posX,$posY,$name,$type);
+          return $infosevent;
       }
       
       

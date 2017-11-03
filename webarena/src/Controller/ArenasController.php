@@ -24,6 +24,20 @@ class ArenasController extends AppController {
 
     public function diary() {
         
+        $player_id = $this->Auth->user('id');        
+        $this->loadModel('Events');
+        $this->loadModel('Fighters');
+       
+        $vision=$this->Fighters->recupererfightervision($player_id);
+        $position=$this->Fighters->find_pos($player_id);    
+        
+        $tab_event=$this->Events->allEvents_portee_devue($vision,$position);
+       
+ 
+ 
+        $this->set('tab_event',$tab_event);
+        
+        
     }
 
     public function accueil() {
@@ -250,8 +264,18 @@ class ArenasController extends AppController {
                 $position=$this->Fighters->find_pos($player_id);
                 $bonus=$this->Tools->recupererbonustool($position);
                 $type=$this->Tools->recuperertypetool($position);
-                $this->Fighters->attraper($player_id,$position,$bonus,$type);
+                $infos=$this->Fighters->attraper($player_id,$position,$bonus,$type);
                 $this->Tools-> effacertool($position);
+                   $event = $this->Events->newEntity();
+                   $event->name=$infos[2]." a attrapé ".$infos[3];
+                   $event->coordinate_x=$infos[0];
+                   $event->coordinate_y=$infos[1];
+                   $time = Time::now();
+                        $event->date=$time;
+                    if ($this->Events->save($event)) {
+                    $messagez="event sauvegardé";
+                   
+                    }
                 
             }
             if ($indice==5){
@@ -480,7 +504,7 @@ public function createfighter()
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
 
-        $this->Auth->allow(['add', 'logout', 'fighter', 'diary','connection','afficherpassword']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
+        $this->Auth->allow(['add', 'logout','connection','afficherpassword']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
 
     }
 

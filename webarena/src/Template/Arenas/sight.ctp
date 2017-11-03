@@ -1,5 +1,5 @@
 <title>Arena</title>
-<?php if($existe==1){  ?>
+<?php  if($existe==1){  ?>
 <section style="display :grid; grid-template-columns: 950px 250px; grid-template-rows: 950px ;">
 
     <section style="grid-column: 1; grid-row: 1;">
@@ -181,16 +181,16 @@ for ($i=0; $i<10; $i++){
         <section style="display :grid; grid-template-columns: 83px 83px 83px; grid-template-rows: 30px 30px 30px ;">
 
             <section style="grid-column: 2; grid-row: 1;">          
-                <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'0']]);       ?>
+                <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'0']]);       ?>
             </section>
             <section style="grid-column: 2; grid-row: 3;">     
-                <?php       echo  $this->Form->postButton('down',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'1']]);     ?>
+                <?php       echo  $this->Form->postButton('down',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'1']]);     ?>
             </section>
             <section style="grid-column: 3; grid-row: 2;">    
-                <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'2']]);    ?>
+                <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'2']]);    ?>
             </section>
             <section style="grid-column: 1; grid-row: 2;">  
-                <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'3']]);     ?>
+                <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'3']]);     ?>
             </section>
         </section>
             <?php echo '<br/>'; ?>
@@ -200,39 +200,39 @@ for ($i=0; $i<10; $i++){
                
  <?php
        if($tab_pos_tool[$posX][$posY]==1){
-       echo  $this->Form->postButton('attraper',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'4']]);   
+       echo  $this->Form->postButton('attraper',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'4']]);   
        }
        
        ?>
  <?php
        if($posX<9){
        if($tab_pos_fig[$posX+1][$posY]==1){
-       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'6']]); 
+       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'6']]); 
        echo $reussite;
        }
        }
        if($posX>1){
        if($tab_pos_fig[$posX-1][$posY]==1){
-       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'7']]); 
+       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'7']]); 
        echo $reussite;                                   }
                    }
        if($posY<14){
        if($tab_pos_fig[$posX][$posY+1]==1){
-       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'8']]); 
+       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'8']]); 
         echo $reussite;                                    }
                     }
        if($posY>1){
        if($tab_pos_fig[$posX][$posY-1]==1){                                   
-       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'9']]); 
+       echo  $this->Form->postButton('attaquer',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'9']]); 
        echo $reussite;
        
        }
        }
        
        ?>
-        <?php echo  $this->Form->postButton('Créer des Objets',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'5']]);
+        <?php echo  $this->Form->postButton('Créer des Objets',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'5']]);
         ?>
-        <?php echo  $this->Form->postButton('Générer un décor',['controller' => 'Arenas', 'action' => 'arena'],['data'=>['dep'=>'10']]);
+        <?php echo  $this->Form->postButton('Générer un décor',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'10']]);
         ?>
     </section>
 </section>

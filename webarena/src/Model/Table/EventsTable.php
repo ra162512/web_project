@@ -24,4 +24,30 @@ class EventsTable extends Table {
           $query = $this->find('all');
             
     }
+    public function allEvents_portee_devue($sight,$position){
+        $posX=$position[0];
+        $posY=$position[1];
+        $tabevents=array();
+        $i=0;
+        $heure = date("H");
+       $query = $this->find('all')
+               ->order(['date' => 'ASC']);
+             
+       foreach($query as $row){
+           
+           $coorX=$row->coordinate_x;
+           $coorY=$row->coordinate_y;
+           $date=$row->date;
+           if(((abs($posX-$coorX)+abs($posY-$coorY))<=$sight)&&$date->wasWithinLast('24 hours'))
+           {
+               $tabevents[$i]=$row;
+                $i++;
+           }
+          
+       }
+      
+       return $tabevents;      
+           
+    }
+
 }
