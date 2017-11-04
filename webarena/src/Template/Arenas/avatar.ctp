@@ -48,14 +48,18 @@ echo $this->Form->create($particularRecord, ['enctype' => 'multipart/form-data']
 echo $this->Form->input('upload', ['type' => 'file']);
 echo $this->Form->hidden('choix',['value' => 1]);
 echo '<br/>';
-echo $this->Form->button('Change your avatar',   ['class'=>'btn btn-primary  btn-lg']);
+echo $this->Form->button('Select fighter',   ['class'=>'btn btn-primary  btn-lg']);
 echo $this->Form->end(); 
-     ?>
+?>
+     <p>If you want to change avatar, select a file first, or just select fighter</p>
 <style>
   .ima {width: 180px; height: 200px;}
   </style>
-     <?php   if ($choix==1 ){ 
-echo $this->Html->image('avatar/' . $fighter_id . '.jpg', ['class'=>'img-circle ima']); ?>
+     <?php   if ($choix==1){ 
+ if(!empty($this->Html->image('avatar/' . $fighter_id . '.jpg'))){
+    echo $this->Html->image('avatar/' . $fighter_id . '.jpg', ['class'=>'img-circle ima']);
+    
+}else{ echo $this->Html->image('avatar/avatar.jpg', ['class'=>'img-circle ima']);}?>
     <tr>
         <td><?= $fighter_name?></td>
         <td><?= $level?> </td>
@@ -144,19 +148,19 @@ echo $this->Html->image('avatar/' . $fighter_id . '.jpg', ['class'=>'img-circle 
 echo $this->Form->create('Ameliorer1');
 echo $this->Form->select('name',$list);
 echo $this->Form->hidden('choix',['value' => 3]);
-echo $this->Form->button('Upgrade strength');
+echo $this->Form->button('Upgrade strength',   ['class'=>'btn btn-primary  btn-lg']);
 echo $this->Form->end();
 
 echo $this->Form->create('Ameliorer2');
 echo $this->Form->select('name',$list);
 echo $this->Form->hidden('choix',['value' => 4]);
-echo $this->Form->button('Upgrade health');
+echo $this->Form->button('Upgrade health',   ['class'=>'btn btn-primary  btn-lg']);
 echo $this->Form->end();
 
 echo $this->Form->create('Ameliorer3');
 echo $this->Form->select('name',$list);
 echo $this->Form->hidden('choix',['value' => 5]);
-echo $this->Form->button('Upgrade sight');
+echo $this->Form->button('Upgrade sight',   ['class'=>'btn btn-primary  btn-lg']);
 echo $this->Form->end();
  }}
      ?>
