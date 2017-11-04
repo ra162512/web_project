@@ -611,7 +611,7 @@ public function createfighter()
           }
                     if($choix==3){
               
-              $cri=$this->request->getData('Scream');
+              $cri=$this->request->getData('Message');
               $this->loadModel('Events');
               //$this->Events->fairelecri();
               $event = $this->Events->newEntity();

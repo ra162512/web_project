@@ -39,22 +39,22 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="accueil">Home</a></li>
-            <li><a href='connection'>Connexion</a></li>
-            <li><a href='fighter'>Fighter</a></li>
-            <li><a href='sight'>Vision</a></li>
-            <li><a href='diary'>Journal</a></li>
-            <li><a href='message'>Messaging</a></li>
-            <li><a href='nouvelleguilde'>New guilde</a></li>
-            <li><a href='avatar'>Avatar & Upgrades</a></li>
-            <li><a href='logout'>Deconnexion</a></li>
-            
+            <li class="active"><a href="accueil"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li><a href='connection'><span class="glyphicon glyphicon-log-in"> Connexion</a></li>
+            <li><a href='fighter'><span class="glyphicon glyphicon-user"> Fighter</a></li>
+            <li><a href='sight'><span class="glyphicon glyphicon-play"> Vision</a></li>
+            <li><a href='diary'><span class="glyphicon glyphicon-calendar"> Journal</a></li>
+            <li><a href='nouvelleguilde'><span class="glyphicon glyphicon-globe"> New Guilde</a></li>
+            <li><a href='avatar'><span class="glyphicon glyphicon-pencil"> Avatar</a></li>
+            <li><a href='logout'><span class="glyphicon glyphicon-log-out"> Deconnexion</a></li>
+            <li><a href='message'> <span class="glyphicon glyphicon-envelope"></span>Messaging</a></li>
+
           </ul>
             
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <div class="inset">
-                  <img src="http://icdn.pro/images/fr/c/l/club-fight-savon-icone-7160-128.png",  height="55" width="55">
+                  <img src="http://d2qq4423n7kgsb.cloudfront.net/store-kiss-clothing-55afd98e25b53/uploaded/thumbnails/soap_5623bd594e71c_746xauto-png-keep-ratio_5819b557c8640_746xauto-png-keep-ratio.png?1478079831",  height="40" width="55">
                 </div>
               </li>
             </ul>
