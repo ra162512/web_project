@@ -531,6 +531,7 @@ public function createfighter()
     
     
     public function message(){
+        
         $choix=3;
          $listmessages=null;
          $listnom=null;
@@ -558,6 +559,7 @@ public function createfighter()
           
           if($choix==1)
           {
+               $wesh="wesh1";
           $indicetableau_joueur=$this->request->getData('namefrom');
           $indicetableau_joueur1=$this->request->getData('namedest');
           $elem1=$list[$indicetableau_joueur];
@@ -595,35 +597,25 @@ public function createfighter()
         $this->set('listnom',$listnom);
           }
           
-                    if($choix==2){
-              
-              $indice=$this->request->getData('namefrom');
-         $indice2=$this->request->getData('namewith');
-         $nom_recupere=$list3[$indice];
-         $nom_recupere2=$list4[$indice2];
-          $this->set('hey',$nom_recupere);
-         $id_fighter=$this->Fighters->find_id($nom_recupere);
-         $id_fighter2=$this->Fighters->find_id($nom_recupere2);
-        $listmessages=$this->Messages->recuperermessages($id_fighter,$id_fighter2);
-        $listnom=$this->Fighters->recuperernom($listmessages[1]);
-        $this->set('listmessages',$listmessages);
-        $this->set('listnom',$listnom);
-          }
+       
+             
                     if($choix==3){
-              
-              $cri=$this->request->getData('Message');
+              $wesh="wesh";
+              $cri=$this->request->getData('Scream');
+           
               $this->loadModel('Events');
               //$this->Events->fairelecri();
               $event = $this->Events->newEntity();
               $event->name=$cri;
-              $event->coordinate_x=0;
-              $event->coordinate_y=0;
+              $event->coordinate_x=1;
+              $event->coordinate_y=1;
                $time = Time::now();
                $event->date=$time;
               if ($this->Events->save($event)) {
                     $message3="Scream sent ! Do you want to send an other?";
                    
                     }             
+                   
           }
         
                     
@@ -632,7 +624,7 @@ public function createfighter()
          $this->set('mess',$choix);
             $this->set('elem1',$message2);
             $this->set('elem8',$message3);
-     
+            $this->set('wesh',$wesh);
           
 
             

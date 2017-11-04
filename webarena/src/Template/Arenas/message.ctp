@@ -1,3 +1,4 @@
+
 <title>Messaging</title>
 
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script:40,700" rel="stylesheet">
@@ -11,7 +12,7 @@
 			</div>
 			<div class="contact-section">
 			<div class="container">
-				<form>
+				
 					<div class="col-md-6 form-line">
 			  			<div class="form-group">
 			  				<div class="crier form">
@@ -21,19 +22,20 @@
 
                                                                 <legend><?= __("Scream Action"); ?></legend>
 
-                                                                 <?= $elem8;?> </br>
-
-                                                                  <?= $this->Form->control('Message',[ 'class' => 'form-control']); ?>
+                                                                 <?= $elem8;?> <br/>
+                                                                 <?= $wesh; ?>
+                                                                  <?= $this->Form->control('Scream',[ 'class' => 'form-control']); ?>
 
                                                                 <?=  $this->Form->hidden('choix',['value' =>3]); ?>
                                                             </fieldset>
-                                                            </br>
-                                                        <?= $this->Form->button(' Scream' ,[ 'class' => 'btn btn-default btn-md glyphicon glyphicon-bullhorn']);  ?>
+                                                            <br/>
+                                                        <?= $this->Form->button(__('Scream') ,[ 'class' => 'btn btn-default btn-md glyphicon glyphicon-bullhorn']);  ?>
                                                  <?= $this->Form->end() ?>
                                                          </div>
 
 				  		</div>
-                                   
+  
+                                           
                         <legend><?= __("Read Message"); ?></legend>
                                                  <div class="lire message">
                                                 
@@ -67,7 +69,7 @@
       
         <legend><?= __("Message Inbox"); ?></legend>
         
-        <?= $elem1; ?>  </br>
+        <?= $elem1; ?>  <br/>
         <?= "Choose your fighter : "; echo $this->Form->select('namefrom',$list,['class'=>'btn btn-default btn-sm dropdown-toggle','data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'true']); ?>
          <br/>
         <?= "Chose the fighter you want to send the message : "; echo $this->Form->select('namedest',$list1,['class'=>'btn btn-default btn-sm dropdown-toggle','data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'true']); ?>
@@ -120,9 +122,9 @@
 </div>
 			  			
 					</div>		
-					</div>
-				</form>
-			</div>
+		
+				
+
 		</section>
 
 
