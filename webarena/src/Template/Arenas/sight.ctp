@@ -181,21 +181,23 @@ for ($i=0; $i<10; $i++){
         <section style="display :grid; grid-template-columns: 83px 83px 83px; grid-template-rows: 30px 30px 30px ;">
 
             <section style="grid-column: 2; grid-row: 1;">          
-                <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'0']]);       ?>
+                <?php        echo  $this->Form->postButton('up',['controller' => 'Arenas', 'action' => 'sight'],['class'=>'btn btn-primary  btn-lg'],['data'=>['dep'=>'0']]);       ?>
             </section>
             <section style="grid-column: 2; grid-row: 3;">     
-                <?php       echo  $this->Form->postButton('down',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'1']]);     ?>
+                <?php       echo  $this->Form->postButton('down',['controller' => 'Arenas', 'action' => 'sight'],['class'=>'btn btn-primary  btn-lg'],['data'=>['dep'=>'1']]);     ?>
             </section>
             <section style="grid-column: 3; grid-row: 2;">    
-                <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'2']]);    ?>
+                <?php       echo  $this->Form->postButton('right',['controller' => 'Arenas', 'action' => 'sight'],['class'=>'btn btn-primary  btn-lg'],['data'=>['dep'=>'2']]);    ?>
             </section>
             <section style="grid-column: 1; grid-row: 2;">  
-                <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'3']]);     ?>
+                <?php       echo  $this->Form->postButton('left',['controller' => 'Arenas', 'action' => 'sight'],['class'=>'btn btn-primary  btn-lg'],['data'=>['dep'=>'3']]);     ?>
             </section>
         </section>
             <?php echo '<br/>'; ?>
+               <?php echo '<br/>'; ?>
             <?php echo $mess; ?>
             <?php echo '<br/>'; ?>
+               <?php echo '<br/>'; ?>
             
                
  <?php
@@ -230,9 +232,10 @@ for ($i=0; $i<10; $i++){
        }
        
        ?>
-        <?php echo  $this->Form->postButton('Créer des Objets',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'5']]);
+        <?php echo  $this->Form->postButton('Créer des Objets',['controller' => 'Arenas', 'action' => 'sight'], [ 'class' => 'btn btn-info btn-block'],['data'=>['dep'=>'5']]);
         ?>
-        <?php echo  $this->Form->postButton('Générer un décor',['controller' => 'Arenas', 'action' => 'sight'],['data'=>['dep'=>'10']]);
+        <br/>
+        <?php echo  $this->Form->postButton('Générer un décor',['controller' => 'Arenas', 'action' => 'sight'], [ 'class' => 'btn btn-info btn-block'],['data'=>['dep'=>'10']]);
         ?>
     </section>
 </section>
