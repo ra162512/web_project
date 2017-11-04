@@ -23,7 +23,6 @@
                                                                 <legend><?= __("Scream Action"); ?></legend>
 
                                                                  <?= $elem8;?> <br/>
-                                                                 <?= $wesh; ?>
                                                                   <?= $this->Form->control('Scream',[ 'class' => 'form-control']); ?>
 
                                                                 <?=  $this->Form->hidden('choix',['value' =>3]); ?>

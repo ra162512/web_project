@@ -600,7 +600,6 @@ public function createfighter()
        
              
                     if($choix==3){
-              $wesh="wesh";
               $cri=$this->request->getData('Scream');
            
               $this->loadModel('Events');
@@ -624,7 +623,6 @@ public function createfighter()
          $this->set('mess',$choix);
             $this->set('elem1',$message2);
             $this->set('elem8',$message3);
-            $this->set('wesh',$wesh);
           
 
             
