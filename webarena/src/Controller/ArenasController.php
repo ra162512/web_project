@@ -58,10 +58,10 @@ class ArenasController extends AppController {
     if ($this->request->is('post')) {
       $guild = $this->Guilds->patchEntity($guild, $this->request->data);
       if ($this->Guilds->save($guild)) {
-        $messG="Guilde crée avec succès";
+        $messG="Guild created";
       }
       else{
-        $messG="Impossible de créer une nouvelle Guilde";
+        $messG="Unable to create a new guild";
     }
     }
     $this->set('guild_id', $guild_id);
@@ -267,13 +267,13 @@ class ArenasController extends AppController {
                 $infos=$this->Fighters->attraper($player_id,$position,$bonus,$type);
                 $this->Tools-> effacertool($position);
                    $event = $this->Events->newEntity();
-                   $event->name=$infos[2]." a attrapé ".$infos[3];
+                   $event->name=$infos[2]." caught ".$infos[3];
                    $event->coordinate_x=$infos[0];
                    $event->coordinate_y=$infos[1];
                    $time = Time::now();
                         $event->date=$time;
                     if ($this->Events->save($event)) {
-                    $messagez="event sauvegardé";
+                    $messagez="Event saved";
                    
                     }
                 
@@ -324,13 +324,13 @@ class ArenasController extends AppController {
                 }
                 if($infos_event[3]==1){
                    $event = $this->Events->newEntity();
-                   $event->name=$infos_event[2]." a attaqué ".$infos_event[1];
+                   $event->name=$infos_event[2]." attacked ".$infos_event[1];
                    $event->coordinate_x=$position_advX;
                    $event->coordinate_y=$position_advY;
                    $time = Time::now();
                         $event->date=$time;
                     if ($this->Events->save($event)) {
-                    $messagez="event sauvegardé";
+                    $messagez="Event saved";
                    
                     }  
                 }
@@ -342,7 +342,7 @@ class ArenasController extends AppController {
                    $time = Time::now();
                         $event->date=$time;
                     if ($this->Events->save($event)) {
-                    $messagez="event sauvegardé";
+                    $messagez="Event saved";
                 }
                  }
                 if ($indice==10){
@@ -443,10 +443,10 @@ public function createfighter()
         $fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
         $fighter->player_id=$id_user;
         if ($this->Fighters->save($fighter)) {
-          $message="Nouveau combatant crée";
+          $message="New Fighter created";
         }
         else{
-          $message="Impossible de créer un nouveau combatant";
+          $message="Unable to create a new Fighter";
       }
       $this->set('message', $message);
     }
@@ -466,7 +466,7 @@ public function createfighter()
                     
                     
                 
-                }else{$password="mail non connu"; }
+                }else{$password="Email unknown"; }
           }
           $this->set('password', $password);
           
@@ -490,10 +490,10 @@ public function createfighter()
         if ($this->request->is('post')) {
             $player = $this->Players->patchEntity($player, $this->request->getData());
             if ($this->Players->save($player)) { // tuple inséré dans la bdd
-                $this->Flash->success(__("L'utilisateur a été sauvegardé."));
+                $this->Flash->success(__("User saved."));
                 return $this->redirect(['action' => 'accueil']);
             }
-            $this->Flash->error(__("Impossible d'ajouter l'utilisateur."));
+            $this->Flash->error(__("Unable to add the user."));
         }
         $this->set('player', $player);
     }
@@ -504,7 +504,7 @@ public function createfighter()
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
 
-        $this->Auth->allow(['add', 'logout','connection','afficherpassword']); // permet de mettre de faire en sorte que les elements auth laisse publique dans add et logout
+        $this->Auth->allow(['add', 'logout','connection','afficherpassword']); // permet de faire en sorte que les elements auth laisse publique dans add et logout
 
     }
 
@@ -563,7 +563,7 @@ public function createfighter()
           $elem1=$list[$indicetableau_joueur];
           $elem2=$list1[$indicetableau_joueur1];
          $elem3=$this->request->getData('message');
-         $elem4=$this->request->getData('titre');
+         $elem4=$this->request->getData('title');
             
            
             $id_sender=$this->Fighters->find_id($elem1);
@@ -576,7 +576,7 @@ public function createfighter()
             $message->date=$time;
        
             if ($this->Messages->save($message)) {
-                    $message2="message envoyé! voulez vous en envoyer un autre?";
+                    $message2="Message sent! Do you want to send an other?";
                    
                     }
           }
@@ -611,7 +611,7 @@ public function createfighter()
           }
                     if($choix==3){
               
-              $cri=$this->request->getData('cri');
+              $cri=$this->request->getData('Scream');
               $this->loadModel('Events');
               //$this->Events->fairelecri();
               $event = $this->Events->newEntity();
@@ -621,7 +621,7 @@ public function createfighter()
                $time = Time::now();
                $event->date=$time;
               if ($this->Events->save($event)) {
-                    $message3="cri envoyé! voulez vous en envoyer un autre?";
+                    $message3="Scream sent ! Do you want to send an other?";
                    
                     }             
           }

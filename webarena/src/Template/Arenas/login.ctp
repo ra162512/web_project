@@ -6,7 +6,7 @@
 <?php echo $this->Form->create(); ?>
     <fieldset>
       
-        <legend><?= __("Merci de rentrer votre email et mot de passe") ?></legend>
+        <legend><?= __("Please, put your email and password") ?></legend>
       
         <?= $this->Form->control('email', [ 'class' => 'form-control']) ?>
           

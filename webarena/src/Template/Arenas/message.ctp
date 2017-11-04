@@ -8,12 +8,12 @@
         
          <?= $elem8; ?>  </br>
          
-          <?= $this->Form->control('Message'); ?>
+          <?= $this->Form->control('Scream',['style'=>'border-radius : 13px']); ?>
          
         <?=  $this->Form->hidden('choix',['value' =>3]); ?>
     </fieldset>
     
-<?= $this->Form->button(__('Scream')); 
+<?= $this->Form->button(__(' Scream'),['class'=>'btn btn-danger glyphicon glyphicon-comment','style'=>'border-radius : 24px']); 
 
 
  
@@ -22,7 +22,7 @@
 <?= $this->Form->end() ?>
 
 
-
+<?= '<br/><br/>' ?>
 
 <div class="message form">
 <?= $this->Flash->render() ?>
@@ -32,14 +32,15 @@
         <legend><?= __("Message Inbox"); ?></legend>
         
         <?= $elem1; ?>  </br>
-        <?= "Choose your fighter"; echo $this->Form->select('namefrom',$list); ?>
-         <?= "Chose the fighter you want to send the message"; echo $this->Form->select('namedest',$list1); ?>
-          <?= $this->Form->control('title'); ?>
-        <?= $this->Form->control('message'); ?>   
+        <?= "Choose your fighter : "; echo $this->Form->select('namefrom',$list,['class'=>'btn btn-default btn-sm dropdown-toggle','data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'true']); ?>
+         <br/>
+        <?= "Chose the fighter you want to send the message : "; echo $this->Form->select('namedest',$list1,['class'=>'btn btn-default btn-sm dropdown-toggle','data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'true']); ?>
+          <?= $this->Form->control('title',['style'=>'border-radius : 13px']); ?>
+        <?= $this->Form->control('message',['style'=>'border-radius : 13px']); ?>   
         <?=  $this->Form->hidden('choix',['value' => 1]); ?>
     </fieldset>
     
-<?= $this->Form->button(__('Send')); 
+<?= $this->Form->button(__(' Send'),['class'=>'btn btn-danger glyphicon glyphicon-envelope','style'=>'border-radius : 24px']); 
 
 
  
@@ -49,20 +50,21 @@
 
 
 <div class="lire message">
-</br> </br> </br> </br> </br>
+</br> </br> </br> 
 <?= $this->Flash->render() ?>
 <?= $this->Form->create('recevoir') ?>
     <fieldset>
-        
-        <?= "From who do you want to read the message ?"; echo $this->Form->select('namefrom',$list3); ?>
-      <?= "Choose with which fighter"; echo $this->Form->select('namewith',$list4); ?>
+        <legend><?= __("Check your messages"); ?></legend>
+        <?= "From who do you want to read the message ? "; echo $this->Form->select('namefrom',$list3,['class'=>'btn btn-default btn-sm dropdown-toggle','data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'true']); ?>
+        <br/>
+      <?= "Choose with which fighter : "; echo $this->Form->select('namewith',$list4,['class'=>'btn btn-default btn-sm dropdown-toggle','data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'true']); ?>
 
       <?=  $this->Form->hidden('choix',['value' =>2]); ?>
        
    
     </fieldset>
     
-<?= $this->Form->button(__('Read'));  ?>
+<?= $this->Form->button(__(' Read'),['class'=>'btn btn-danger glyphicon glyphicon-eye-open','style'=>'border-radius : 24px']);  ?>
     
 <?= $this->Form->end() ?>
    

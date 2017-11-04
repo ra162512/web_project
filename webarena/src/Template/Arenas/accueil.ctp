@@ -34,8 +34,8 @@ color: #ffffff;
 </div>
 
 <div class="container-fluid bg-2 text-center" >
-  <h3>Bienvenu dans FightClub, le jeu où vous allez devoir vous battre pour survivre</h3>
-  <p>merci de selectionner une des catégories suivantes. <br> commencez par vous inscrire si vous n'avez jamais joué par le passé </p>
+  <h3>Welcome to FightClub, the place where you must fight to survive !</h3>
+  <p>Please, select one of the following categories. <br> Register you if you have never played before</p>
 <button type="button" class="btn btn-success"  name="login" value="Login" onclick="javascript:location.href='Login'">Login</button>
                     
 <button type="button" class="btn btn-danger" name="createFighter" value="Create Fighter" onclick="javascript:location.href='Fighter'">Create Fighter</button>

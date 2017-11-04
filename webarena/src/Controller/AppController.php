@@ -109,10 +109,10 @@ class AppController extends Controller {
         $this->Auth->allow(['index', 'view', 'display', 'accueil']);
           $co = $this->Auth->user('id');
         if ($co != null) {
-            $message = "Vous êtes bien connecté";
+            $message = "You are logged";
             $this->set('message', $message);
         } else {
-            $message = "Vous n'êtes pas connecté";
+            $message = "You are not logged";
             $this->set('message', $message);
         }
     }

@@ -47,28 +47,28 @@ class FightersTable extends Table {
                 $query->update()                   
                         ->set(['coordinate_x' => $posX ])
                         ->execute();
-                $message = 'Vous allez en haut';
+                $message = 'You go up';
             }                        
             else if ($direction == 1&& $posX<9&&$tableau_buisson[$posX+1][$posY]!=1&&$tableau_fighter[$posX+1][$posY]!=1){
                 $query->update()                   
                         ->set(['coordinate_x' => $posX +2])
                         ->execute();
-                $message  ='Vous allez en bas';
+                $message  ='You go down';
             }
             else if ($direction == 2&& $posY<14&&$tableau_buisson[$posX][$posY+1]!=1&&$tableau_fighter[$posX][$posY+1]!=1){
                 $query->update()                   
                         ->set(['coordinate_y' => $posY +2])
                         ->execute();
-                $message  ='Vous allez à droite';
+                $message  ='You go on the right';
             }
             else if ($direction == 3&& $posY>=1&&$tableau_buisson[$posX][$posY-1]!=1&&$tableau_fighter[$posX][$posY-1]!=1){
                 $query->update()                   
                         ->set(['coordinate_y' => $posY])
                         ->execute();
-                $message  ='Vous allez à gauche';
+                $message  ='You go on the left';
             }
             else{
-                $message="Et ben non, vous ne pouvez pas vous deplacer ici";
+                $message="I'm sorry, but you can't go there";
                 }
             return $message;
         }

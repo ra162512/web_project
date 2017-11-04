@@ -1,7 +1,7 @@
 <title>Diary</title>
 
 <body>
-    <h4>Your events</h4>
+    <legend><?= __("Your Events"); ?></legend>
     <br/>
     <?php 
     for($i=0;$i<count($tab_event);$i++)

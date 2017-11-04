@@ -44,6 +44,7 @@
             <li><a href='fighter'>Fighter</a></li>
             <li><a href='sight'>Vision</a></li>
             <li><a href='diary'>Journal</a></li>
+            <li><a href='message'>Messaging</a></li>
             <li><a href='nouvelleguilde'>New guilde</a></li>
             <li><a href='avatar'>Avatar & Upgrades</a></li>
             <li><a href='logout'>Deconnexion</a></li>
