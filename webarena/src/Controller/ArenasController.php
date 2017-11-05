@@ -101,7 +101,7 @@ class ArenasController extends AppController {
 		if ($this->request->is('post')) { 
                     $choix= $this->request->getData('choix');  
                     
-                      if($choix==1){
+                      
                                  
 		                 $indicetableau_joueur=$this->request->getData('name');                                                                                                  
                                  $elem1=$list[$indicetableau_joueur];
@@ -118,7 +118,7 @@ class ArenasController extends AppController {
                                  $this->set('skill_health', $health);
                                  $this->set('xp', $xp);
                                  $this->set('level', $level);
-                      
+                      if($choix==1){
                           
 			  if (!empty($this->request->data['upload']['name'])) {
                                 $file = $this->request->data['upload']; 
