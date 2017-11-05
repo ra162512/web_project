@@ -1,5 +1,6 @@
 <title>Sight</title>
-<?php  if($existe==1){  ?>
+<?php  if($existe==1){ 
+?>
 <section style="display :grid; grid-template-columns: 950px 250px; grid-template-rows: 950px ;">
 
     <section style="grid-column: 1; grid-row: 1;">
@@ -228,7 +229,8 @@ for ($i=0; $i<10; $i++){
        }
        }
        
-       ?>
+    
+   ?>
         <br/>
         <?php echo  $this->Form->postButton('Create Tools',['controller' => 'Arenas', 'action' => 'sight'],['class' => 'btn btn-info btn-block','data'=>['dep'=>'5']]);
         ?>
@@ -238,9 +240,18 @@ for ($i=0; $i<10; $i++){
     </section>
 </section>
 
-<?php }
+<?php 
+    }
+
+
+
+
+
+       
+
 
 else{
     echo "You have to create a fighter to access the arena";
 
   }
+  

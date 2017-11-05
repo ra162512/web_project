@@ -15,7 +15,7 @@ class ArenasController extends AppController {
 
     public function signup() {
         
-    }
+    }                 
 
     public function fighter() {
         
@@ -23,7 +23,17 @@ class ArenasController extends AppController {
 
 
     public function diary() {
-        
+        $tab_event=null;
+  $this->loadModel('Fighters');
+        $player_id = $this->Auth->user('id');
+        $sortie=$this->Fighters->existfig($player_id);
+        if($sortie==null){
+            $existe=0;
+        }
+        else {
+            $existe=1;
+        }
+        if($existe==1){
         $player_id = $this->Auth->user('id');        
         $this->loadModel('Events');
         $this->loadModel('Fighters');
@@ -34,10 +44,10 @@ class ArenasController extends AppController {
         $tab_event=$this->Events->allEvents_portee_devue($vision,$position);
        
  
- 
+        }
         $this->set('tab_event',$tab_event);
         
-        
+         
     }
 
     public function accueil() {
@@ -71,7 +81,17 @@ class ArenasController extends AppController {
   
    public function Avatar(){  
        
-            $this->loadModel('Fighters');
+  $this->loadModel('Fighters');
+        $player_id = $this->Auth->user('id');
+        $sortie=$this->Fighters->existfig($player_id);
+        $choix=0;
+        if($sortie==null){
+            $existe=0;
+        }
+        else {
+            $existe=1;
+        }
+        if($existe==1){
             $session = $this->request->session();
             $myid=$session->read('Auth.User.id');
             $this->set('particularRecord', 'uploadAvatar'); //Setting View Variable
@@ -170,6 +190,8 @@ class ArenasController extends AppController {
                 
                 $this->set('choix',$choix);
     }
+     $this->set('exist',$existe);
+   }
 
  
   
@@ -188,6 +210,8 @@ class ArenasController extends AppController {
         
         $player_id = $this->Auth->user('id');
         $sortie=$this->Fighters->existfig($player_id);
+        $exist_1=1;
+        $exist_2=1;
         if($sortie==null){
             $existe=0;
         }
@@ -195,7 +219,7 @@ class ArenasController extends AppController {
             $existe=1;
         }
         if($existe==1){
-          
+    
         $position_courante=$this->Fighters->find_pos($player_id);
         $sight=$this->Fighters->recupererfightervision($player_id);
         $event=$this->Events->allEvents();
@@ -233,7 +257,7 @@ class ArenasController extends AppController {
                   $positionx_tool=$tools[$i]->coordinate_x;
                     $positiony_tool=$tools[$i]->coordinate_y;
                     $tableauposition_tools[$positionx_tool-1][$positiony_tool-1]=1;
-                    $tableau_type_tools[$positionx_sur-1][$positiony_sur-1]=$tools[$i]->type;
+                    $tableau_type_tools[$positionx_tool-1][$positiony_tool-1]=$tools[$i]->type;
                 
              }        
                 
@@ -420,8 +444,14 @@ class ArenasController extends AppController {
         $arene=array($surroundings,$fighters,$tools,$event);
         $this->set('arene',$arene); 
          $this->set('reussite',$reussite);
-        }
+      
+         }
+         
+        
          $this->set('existe',$existe);
+         $this->set('exist_1',$exist_1);
+         $this->set('exist_2',$exist_2);
+         
          
     }
     
@@ -440,15 +470,24 @@ public function createfighter()
       $id_user = $this->Auth->user('id');
       
       if ($this->request->is('post')) {
+          
+          $oui_ounon=$this->Fighters->alreadyFighter($player_id);
+          if($oui_ounon==1){
+              $message="You already have a fighter";
+              $this->set('message', $message);
+          }
+         else {
         $fighter = $this->Fighters->patchEntity($fighter, $this->request->data);
         $fighter->player_id=$id_user;
-        if ($this->Fighters->save($fighter)) {
+       if ($this->Fighters->save($fighter)) {
           $message="New Fighter created";
         }
         else{
           $message="Unable to create a new Fighter";
       }
       $this->set('message', $message);
+     
+      }
     }
     }
      public function afficherpassword() {
@@ -531,11 +570,22 @@ public function createfighter()
     
     
     public function message(){
-        
+         $this->loadModel('Fighters');
+         $listmessages=null;
+        $player_id = $this->Auth->user('id');
+        $sortie=$this->Fighters->existfig($player_id);
+   
+        if($sortie==null){
+            $existe=0;
+        }
+        else {
+            $existe=1;
+        }
+        if($existe==1){
         $choix=3;
          $listmessages=null;
          $listnom=null;
-         $this->loadModel('Fighters');
+     
           $id_envoyeur = $this->Auth->user('id');   
         $list=$this->Fighters->getallFighterssender($id_envoyeur);
         $list1=$this->Fighters->getallFightersreceiver1($id_envoyeur);
@@ -562,6 +612,7 @@ public function createfighter()
                $wesh="wesh1";
           $indicetableau_joueur=$this->request->getData('namefrom');
           $indicetableau_joueur1=$this->request->getData('namedest');
+             if(isset($indicetableau_joueur1)){
           $elem1=$list[$indicetableau_joueur];
           $elem2=$list1[$indicetableau_joueur1];
          $elem3=$this->request->getData('message');
@@ -581,11 +632,16 @@ public function createfighter()
                     $message2="Message sent! Do you want to send an other?";
                    
                     }
-          }
+             }
+             else{
+                 $message2="message non envoyé il manque un destinataire";
+             }
+      }
           if($choix==2){
               
               $indice=$this->request->getData('namefrom');
          $indice2=$this->request->getData('namewith');
+         if(isset($indice2)){
          $nom_recupere=$list3[$indice];
          $nom_recupere2=$list4[$indice2];
           $this->set('hey',$nom_recupere);
@@ -593,8 +649,10 @@ public function createfighter()
          $id_fighter2=$this->Fighters->find_id($nom_recupere2);
         $listmessages=$this->Messages->recuperermessages($id_fighter,$id_fighter2);
         $listnom=$this->Fighters->recuperernom($listmessages[1]);
-        $this->set('listmessages',$listmessages);
+       
         $this->set('listnom',$listnom);
+         }
+     
           }
           
        
@@ -603,7 +661,7 @@ public function createfighter()
               $cri=$this->request->getData('Scream');
            
               $this->loadModel('Events');
-              //$this->Events->fairelecri();
+            
               $event = $this->Events->newEntity();
               $event->name=$cri;
               $event->coordinate_x=1;
@@ -629,6 +687,9 @@ public function createfighter()
             
             
   }
+   $this->set('listmessages',$listmessages);
+  $this->set('exist',$existe);
+    }
             
             
        

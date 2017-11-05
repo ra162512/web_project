@@ -15,6 +15,7 @@ use Cake\ORM\Table;
  * @author Kow AME
  */
 class SurroundingsTable extends Table {
+    
     //put your code here
     public function allCases() {
         
@@ -95,6 +96,11 @@ class SurroundingsTable extends Table {
     public function deleteSurrounds(){
         $query = $this->find('all');
         $query->delete()->execute();
+    }
+    public function existsur(){
+         $query = $this->find('all');
+       
+       return ($query->toArray());
     }
     
 }

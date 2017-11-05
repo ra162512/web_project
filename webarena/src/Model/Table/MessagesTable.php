@@ -41,5 +41,7 @@ class MessagesTable extends Table {
         $ensemble_messages=array($titres,$id,$message,$date);
         return $ensemble_messages;
     }
+
+
     //put your code here
 }

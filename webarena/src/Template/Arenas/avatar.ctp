@@ -1,5 +1,5 @@
 <title>CustomFighter</title>
-
+<?php if($exist==1){ ?>
 <div class="large-4 medium-4 large-offset-4 medium-offset-4 columns">
 	<div class="panel">
 		<h2 class="text-center">Custom Fighter</h2>
@@ -159,4 +159,7 @@ echo $this->Form->hidden('choix',['value' => 5]);
 echo $this->Form->button('Upgrade sight');
 echo $this->Form->end();
  }}
-     ?>
+    }
+else{
+    echo "you need to create a fighter first";
+} ?>

@@ -5,6 +5,7 @@
    	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   
+<?php if($exist==1){ ?>
 <section id="contact">
 			<div class="section-content">
 				<h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Scream & Message</span></h1>
@@ -136,3 +137,9 @@
 background: #00ff00 url("https://lostandtaken.com/wp-content/uploads/edd/2016/02/black-rock-concrete-texture-15.jpg");  background-position: center; color : #fff; }
 label{font-size: 1.3em; line-height: 1em; font-weight: normal;}
 </style>
+<?php
+}
+else{
+echo "you need to create a fighter first";
+}
+?>

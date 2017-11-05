@@ -406,6 +406,21 @@ class FightersTable extends Table {
         ->where(['player_id' => $player_id]);
        return ($query->toArray());
     }
+    public function alreadyFighter($player_id){
+        $query = $this->find('all')
+        ->where(['player_id' => $player_id]);
+        foreach($query as $row){
+            
+            $exist=$row->player_id;
+        }
+        if(!isset($exist)){
+            $oui_ou_non=0;
+        }
+        else{
+           $oui_ou_non=1; 
+        }
+        return $oui_ou_non;
+    }
 }
 
 

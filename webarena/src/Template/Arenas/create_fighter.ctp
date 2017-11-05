@@ -30,6 +30,7 @@
 
     echo $this->Form->button(__("Create a Fighter"));
     echo $this->Form->end();
+   
     ?>
 
     <h2> Information </h2>

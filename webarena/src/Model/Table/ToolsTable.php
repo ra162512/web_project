@@ -97,4 +97,8 @@ class ToolsTable extends Table{
         $query = $this->find('all');
         $query->delete()->execute();
     }
+    public function existtools(){
+         $query = $this->find('all');
+       return ($query->toArray());
+    }
 }
