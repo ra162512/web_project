@@ -82,7 +82,7 @@
       <br/>
       <br/>
       
-      <div align="right">
+      <div style="margin-left:90%;">
       <h5> &diams; Brice Koenig <br/> &diams; Yacine Zidi <br/> &diams; Raphael Attali  <br/> &diams; Coraline Amemoutou<br/> option A & B & F </h5>
       <a href='https://github.com/ra162512/web_project/commits/master'>Versions.log  </a>
       <h4>    <?php echo $message;?> </h4>

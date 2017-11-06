@@ -458,7 +458,7 @@ class ArenasController extends AppController {
 public function createfighter()
     {
       // Creation nouveau combatant
-      
+ 
       $this->loadModel('Fighters');
       $this->loadModel('Surroundings');
       $this->set('posx', $this->Surroundings->positionx());

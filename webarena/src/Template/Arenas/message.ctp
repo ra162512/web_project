@@ -6,7 +6,7 @@
    	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   
 <?php if($exist==1){ ?>
-<section id="contact">
+<section id="contact" >
 			<div class="section-content">
 				<h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Scream & Message</span></h1>
 				
@@ -14,7 +14,7 @@
 			<div class="contact-section">
 			<div class="container">
 				
-					<div class="col-md-6 form-line">
+					<div class="col-md-6">
 			  			<div class="form-group">
 			  				<div class="crier form">
                                                         <?= $this->Flash->render() ?>
@@ -35,7 +35,7 @@
 
 				  		</div>
   
-                                           
+                                           </div>
                         <legend><?= __("Read Message"); ?></legend>
                                                  <div class="lire message">
                                                 
@@ -50,12 +50,12 @@
                                                       <?=  $this->Form->hidden('choix',['value' =>2]); ?>
 
 
-                                                    </fieldset>
+                                                    
 
                                                 <?= $this->Form->button(' Read', [ 'class' => 'btn btn-default btn-md glyphicon glyphicon-eye-open']);  ?>
 
                                                 <?= $this->Form->end() ?>
-
+</fieldset>
 				  	</div>
                                 </div>
 
@@ -133,8 +133,8 @@
 <style>
 .content-header{ font-family: 'Oleo Script', cursive; font-size: 45px;}
 .section-content{ text-align: center;}
-#contact{ font-family: 'Teko', sans-serif; padding-top: 60px; width: 100%; width: 100vw; height: 550px;
-background: #00ff00 url("https://lostandtaken.com/wp-content/uploads/edd/2016/02/black-rock-concrete-texture-15.jpg");  background-position: center; color : #fff; }
+#contact{ font-family: 'Teko', sans-serif; padding-top: 60px; width: 100%; width: 100vw; height: 100%px;
+background: #00ff00 url("https://www.simpleshapes.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/9/1/9181_img3_closeup.jpg");  background-position: center; }
 label{font-size: 1.3em; line-height: 1em; font-weight: normal;}
 </style>
 <?php
